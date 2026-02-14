@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Header from "@/components/shared/header";
 import Footer from "@/components/footer";
 
 export const metadata: Metadata = {
@@ -12,6 +13,7 @@ export const metadata: Metadata = {
 export default function AboutPage() {
   return (
     <div className="min-h-screen bg-gray-50">
+      <Header />
       {/* Hero Section */}
       <section className="bg-gradient-to-r from-blue-600 to-blue-800 text-white py-16">
         <div className="container mx-auto px-4 max-w-6xl">
@@ -294,7 +296,7 @@ export default function AboutPage() {
               Contact Us
             </a>
             <a
-              href="/products"
+              href="/search"
               className="bg-blue-700 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-600 transition-colors border-2 border-white"
             >
               Browse Products
@@ -316,6 +318,7 @@ export default function AboutPage() {
           </p>
         </div>
       </section>
+      <Footer />
     </div>
   );
 }
