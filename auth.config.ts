@@ -6,6 +6,9 @@ export const authConfig = {
   providers: [], // Required by NextAuthConfig type
   callbacks: {
     authorized({ request, auth }: any) {
+      // Get pathname from the req URL object
+      const { pathname } = request.nextUrl;
+
       // Array of regex patterns of paths we want to protect
       const protectedPaths = [
         /\/shipping-address/,
@@ -16,8 +19,6 @@ export const authConfig = {
         /\/order\/(.*)/,
         /\/admin/,
       ];
-      // Get pathname from the req URL object
-      const { pathname } = request.nextUrl;
 
       // STEP 1: Check public paths FIRST (before protected paths)
       const publicPaths = [
