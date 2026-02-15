@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
-import Header from "@/components/shared/Header";
-import Footer from "@/components/Footer";
+import Header from "@/components/shared/header";
+import Footer from "@/components/footer";
 
 export const metadata: Metadata = {
   title: "Terms of Service - KEYVERSELY LLC",
