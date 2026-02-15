@@ -16,9 +16,42 @@ export const authConfig = {
         /\/order\/(.*)/,
         /\/admin/,
       ];
-
       // Get pathname from the req URL object
       const { pathname } = request.nextUrl;
+
+      // STEP 1: Check public paths FIRST (before protected paths)
+      const publicPaths = [
+        "/",
+        "/about",
+        "/contact",
+        "/help",
+        "/help-center",
+        "/terms",
+        "/terms-of-service",
+        "/privacy",
+        "/privacy-policy",
+        "/refund-policy",
+        "/return-policy",
+        "/shipping-policy",
+        "/payment-methods", // THIS IS THE KEY ONE!
+        "/products",
+        "/sign-in",
+        "/sign-up",
+      ];
+
+      // Allow if it's a public path
+      if (publicPaths.includes(pathname)) {
+        if (!request.cookies.get("sessionCartId")) {
+          const sessionCartId = crypto.randomUUID();
+          const response = NextResponse.next({
+            request: { headers: new Headers(request.headers) },
+          });
+          response.cookies.set("sessionCartId", sessionCartId);
+          return response;
+        }
+        return true; // ✅ Allow public access
+      }
+
       // Check if user is not authenticated and accessing a protected path
       if (!auth && protectedPaths.some((p) => p.test(pathname))) return false;
 

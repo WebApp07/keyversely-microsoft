@@ -32,31 +32,27 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
+
         {/* ===================================================== */}
-        {/* ✅ Google Analytics */}
+        {/* ✅ Google Tag Manager */}
         {isProduction && (
-          <>
-            <Script
-              src="https://www.googletagmanager.com/gtag/js?id=G-5KDXYVX406"
-              strategy="afterInteractive"
-            />
-            <Script
-              id="gtag-init"
-              strategy="afterInteractive"
-              dangerouslySetInnerHTML={{
-                __html: `
-                  window.dataLayer = window.dataLayer || [];
-                  function gtag(){dataLayer.push(arguments);}
-                  gtag('js', new Date());
-                  gtag('config', 'G-5KDXYVX406');
-                `,
-              }}
-            />
-          </>
+          <Script
+            id="gtm-script"
+            strategy="afterInteractive"
+            dangerouslySetInnerHTML={{
+              __html: `
+                (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+                new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+                j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+                'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+                })(window,document,'script','dataLayer','GTM-M8SLRLGF');
+              `,
+            }}
+          />
         )}
 
         {/* ===================================================== */}
-        {/* ✅ Facebook Pixel */}
+        {/* ✅ Facebook Pixel (optional – you can also move this to GTM later) */}
         {isProduction && FB_PIXEL_ID && (
           <>
             <Script
@@ -99,10 +95,23 @@ export default function RootLayout({
             strategy="afterInteractive"
           />
         )}
-        {/* ===================================================== */}
+
       </head>
 
       <body className={`${inter.className} antialiased`}>
+
+        {/* ✅ Google Tag Manager (noscript) */}
+        {isProduction && (
+          <noscript>
+            <iframe
+              src="https://www.googletagmanager.com/ns.html?id=GTM-M8SLRLGF"
+              height="0"
+              width="0"
+              style={{ display: "none", visibility: "hidden" }}
+            />
+          </noscript>
+        )}
+
         <ThemeProvider
           attribute="class"
           defaultTheme="light"
