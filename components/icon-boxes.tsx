@@ -1,4 +1,4 @@
-import { DollarSign, Headset, ShoppingBag, WalletCards } from "lucide-react";
+import { DollarSign, Mail, ShoppingBag, WalletCards } from "lucide-react";
 import { Card, CardContent } from "./ui/card";
 
 const IconBoxes = () => {
@@ -7,31 +7,31 @@ const IconBoxes = () => {
       <Card>
         <CardContent className="grid md:grid-cols-4 gap-4 p-4">
           <div className="space-y-2">
-            <ShoppingBag />
-            <div className="text-sm font-bold">Instant Delivery</div>
+            <ShoppingBag className="w-6 h-6" />
+            <div className="text-sm font-bold">Instant Email Delivery</div>
             <div className="text-sm text-muted-foreground">
-          Free Support After Purchase
-      </div>  
-          </div>
-          <div className="space-y-2">
-            <DollarSign />
-            <div className="text-sm font-bold">Money Back Guarantee</div>
-            <div className="text-sm text-muted-foreground">
-              Within 30 days of purchase
+              License keys delivered within minutes
             </div>
           </div>
           <div className="space-y-2">
-            <WalletCards />
-            <div className="text-sm font-bold">Flexible Payment</div>
+            <DollarSign className="w-6 h-6" />
+            <div className="text-sm font-bold">7-Day Return Policy</div>
             <div className="text-sm text-muted-foreground">
-              Pay with PayPal, or credit card
+              Refunds for defective or wrong products
             </div>
           </div>
           <div className="space-y-2">
-            <Headset />
-            <div className="text-sm font-bold">24/7 Support</div>
+            <WalletCards className="w-6 h-6" />
+            <div className="text-sm font-bold">Secure Payment</div>
             <div className="text-sm text-muted-foreground">
-              Get support at any time
+              Credit cards, debit cards, and PayPal
+            </div>
+          </div>
+          <div className="space-y-2">
+            <Mail className="w-6 h-6" />
+            <div className="text-sm font-bold">Customer Support</div>
+            <div className="text-sm text-muted-foreground">
+              Mon-Fri, 9 AM - 6 PM EST
             </div>
           </div>
         </CardContent>

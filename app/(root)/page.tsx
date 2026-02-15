@@ -8,7 +8,6 @@ import ProductCarousel from "@/components/shared/product/product-carousel";
 import ProductList from "@/components/shared/product/product-list";
 import ViewAllProductsButton from "@/components/view-all-products-button";
 import CollectionsSection from "@/components/shared/collections-section";
-import CollectionsSkeleton from "@/components/shared/collections-section-skeleton";
 
 import {
   getFeaturedProdcuts,
@@ -24,7 +23,6 @@ const Home = async () => {
       {featuredProducts.length > 0 && (
         <section className="mb-16">
           <ProductCarousel data={featuredProducts} />
-        
         </section>
       )}
 
@@ -45,18 +43,8 @@ const Home = async () => {
       </section>
 
       <section className="mb-16">
-        <DealCountdown />
-      </section>
-
-      <section className="mb-16">
-        <ReviewsSection />
-      </section>
-
-      <section className="mb-16">
         <IconBoxes />
       </section>
-
-    
 
       <section className="mb-20">
         <FAQPage />
