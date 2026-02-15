@@ -11,7 +11,7 @@ export default function ContactForm() {
   const [message, setMessage] = useState("");
 
   const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
   ) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
@@ -40,20 +40,17 @@ export default function ContactForm() {
 
   return (
     <div className="max-w-2xl mx-auto p-8 bg-white dark:bg-zinc-900 rounded-2xl shadow-lg">
-      <h1 className="text-4xl font-bold text-center text-gray-900 dark:text-white mb-4">
-        Contact Us
-      </h1>
       <p className="text-center text-gray-600 dark:text-gray-300 mb-6">
         We'd love to hear from you. Fill out the form or reach us directly at{" "}
         <a
           href="mailto:blbig01@hotmail.com"
           className="text-blue-600 underline hover:text-blue-800"
         >
-          blbig01@hotmail.com
+          support@keyversely.com
         </a>{" "}
         or via{" "}
         <a
-          href="https://wa.me/33758329526"
+          href="https://wa.me/13077856160"
           className="text-blue-600 underline hover:text-blue-800"
           target="_blank"
           rel="noopener noreferrer"
