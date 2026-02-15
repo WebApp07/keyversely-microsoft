@@ -13,47 +13,33 @@ import ReviewList from "./review-list";
 import { auth } from "@/auth";
 import Rating from "@/components/shared/product/rating";
 import RelatedProducts from "@/components/RelatedProducts";
-//import ProductStats from "@/components/shared/ProductStats";
 import ProductFeatures from "@/components/shared/product/product-features";
 
-// --- Stock Badge Component ---
-const StockBadge = ({ stock }: { stock: number }) => {
-  if (stock <= 0) {
+// --- Availability Badge Component (for digital products) ---
+const AvailabilityBadge = ({ available }: { available: boolean }) => {
+  if (!available) {
     return (
       <span className="inline-flex items-center rounded-full bg-red-100 px-3 py-1 text-xs font-medium text-red-700 dark:bg-red-900 dark:text-red-300">
-        ❌ Out of stock
+        ❌ Temporarily unavailable
       </span>
     );
   }
 
-  const isLow = stock <= 5;
   return (
-    <span
-      className={`inline-flex items-center rounded-full px-3 py-1 text-xs font-medium ${
-        isLow
-          ? "bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-300"
-          : "bg-green-100 text-green-700 dark:bg-green-900 dark:text-green-300"
-      }`}
-    >
-      {isLow ? "⚠️ Low stock" : "✅ In stock"} — {stock} left
+    <span className="inline-flex items-center rounded-full bg-green-100 px-3 py-1 text-xs font-medium text-green-700 dark:bg-green-900 dark:text-green-300">
+      ✅ Available now
     </span>
   );
 };
 
 // --- Delivery Notice ---
-const DeliveryNotice = ({
-  title,
-  deliveryTimeRange,
-}: {
-  title: string;
-  deliveryTimeRange: string;
-}) => {
+const DeliveryNotice = ({ title }: { title: string }) => {
   const hasLifetime = /lifetime/i.test(title);
 
   return (
     <div
       role="status"
-      aria-label={`Instant delivery in ${deliveryTimeRange}${
+      aria-label={`Digital delivery within 5-30 minutes${
         hasLifetime ? ", plus lifetime activation" : ""
       }`}
       className="inline-flex items-center space-x-4 rounded-full 
@@ -66,7 +52,7 @@ const DeliveryNotice = ({
         className="rounded-full border-blue-300 bg-white px-3 py-1 text-blue-700 font-medium
           dark:border-blue-700 dark:bg-blue-950 dark:text-blue-300"
       >
-        🚀 Instant Delivery
+        🚀 Instant Digital Delivery
       </Badge>
       {hasLifetime && (
         <Badge
@@ -78,8 +64,9 @@ const DeliveryNotice = ({
         </Badge>
       )}
       <p className="m-0 text-sm text-gray-700 dark:text-gray-300">
-        Get it within <span className="font-semibold">{deliveryTimeRange}</span>
-        {hasLifetime && <> and enjoy lifetime activation.</>}
+        Delivered via email within{" "}
+        <span className="font-semibold">5-30 minutes</span>
+        {hasLifetime && <> with lifetime activation</>}
       </p>
     </div>
   );
@@ -104,6 +91,9 @@ const ProductDetailsPage = async (props: {
   const userId = session?.user?.id;
   const cart = await getMyCart();
 
+  // For digital products, stock > 0 means "available"
+  const isAvailable = product.stock > 0;
+
   return (
     <>
       <section>
@@ -123,10 +113,7 @@ const ProductDetailsPage = async (props: {
                 {product.name}
               </h1>
 
-              <DeliveryNotice
-                title={product.name}
-                deliveryTimeRange="1–3 hours"
-              />
+              <DeliveryNotice title={product.name} />
 
               <ProductFeatures title={product.name} />
 
@@ -142,8 +129,8 @@ const ProductDetailsPage = async (props: {
                     dark:bg-green-900 dark:text-green-300"
                 />
 
-                {/* Stock Indicator */}
-                <StockBadge stock={product.stock} />
+                {/* Availability Indicator (not stock count) */}
+                <AvailabilityBadge available={isAvailable} />
               </div>
             </div>
 
@@ -176,12 +163,12 @@ const ProductDetailsPage = async (props: {
                   <ProductPrice value={Number(product.price)} />
                 </div>
 
-                {/* Stock */}
+                {/* Availability */}
                 <div className="flex justify-between items-center">
                   <span className="font-semibold text-base text-gray-900 dark:text-gray-100">
-                    Stock
+                    Status
                   </span>
-                  <StockBadge stock={product.stock} />
+                  <AvailabilityBadge available={isAvailable} />
                 </div>
 
                 {/* Delivery Info */}
@@ -190,49 +177,48 @@ const ProductDetailsPage = async (props: {
                     id="delivery-info-title"
                     className="font-semibold text-base text-gray-900 dark:text-gray-100"
                   >
-                    Delivery
+                    Digital Delivery
                   </h3>
                   <p className="text-gray-700 dark:text-gray-300">
-                    📧 Delivered via email within <strong>1 to 3 hours</strong>
+                    📧 Delivered via email
                   </p>
-                  <p className="text-xs text-gray-600 dark:text-gray-400">
-                    In most cases, you&apos;ll receive your digital product
-                    instantly after purchase.
+                  <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">
+                    <strong>Typical delivery:</strong> 5-30 minutes
                   </p>
-                </section>
-
-                {/* Location */}
-                <section aria-labelledby="location-info-title" className="mt-4">
-                  <h3 className="mt-2 font-semibold text-base text-gray-900 dark:text-gray-100">
-                    Estimated Delivery:
-                  </h3>
-                  <p className="text-gray-700 dark:text-gray-300">
-                    📧 You&apos;ll receive your digital product via email within{" "}
-                    <strong>1 to 3 hours</strong> of purchase.
+                  <p className="text-xs text-gray-500 dark:text-gray-400">
+                    Maximum delivery time: 24 hours. Check spam folder if not
+                    received.
                   </p>
                 </section>
 
                 {/* Return Policy */}
-                <section aria-labelledby="return-policy-title" className="mt-4">
+                <section
+                  aria-labelledby="return-policy-title"
+                  className="mt-4 border-t pt-4"
+                >
                   <h3
                     id="return-policy-title"
                     className="font-semibold text-base text-gray-900 dark:text-gray-100"
                   >
-                    Returns
+                    Returns & Refunds
                   </h3>
                   <p className="text-gray-700 dark:text-gray-300">
-                    🔁 30-day return policy. Digital product refunds are
-                    reviewed case-by-case.
+                    🔁 7-day return policy for defective products
                   </p>
-                  <p className="text-xs text-gray-500 dark:text-gray-400">
-                    See our full return policy{" "}
+                  <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">
+                    See our full{" "}
                     <a
-                      href="https://www.Bigbl.com/return-policy"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-blue-600 dark:text-blue-400 underline"
+                      href="/return-policy"
+                      className="text-blue-600 dark:text-blue-400 underline hover:text-blue-700"
                     >
-                      here
+                      return policy
+                    </a>{" "}
+                    and{" "}
+                    <a
+                      href="/refund-policy"
+                      className="text-blue-600 dark:text-blue-400 underline hover:text-blue-700"
+                    >
+                      refund policy
                     </a>
                     .
                   </p>
@@ -249,24 +235,29 @@ const ProductDetailsPage = async (props: {
                   >
                     Shop with confidence
                   </h3>
-                  <p className="text-gray-700 dark:text-gray-300">
-                    🛡️ <strong>Money Back Guarantee</strong>
+                  <p className="text-gray-700 dark:text-gray-300 text-sm">
+                    ✅ <strong>Genuine Microsoft licenses</strong>
                   </p>
-                  <p className="text-xs text-gray-500 dark:text-gray-400">
-                    Get the digital product you ordered or your money back.{" "}
+                  <p className="text-gray-700 dark:text-gray-300 text-sm">
+                    🛡️ <strong>Secure payment processing</strong>
+                  </p>
+                  <p className="text-gray-700 dark:text-gray-300 text-sm">
+                    📧 <strong>Instant email delivery</strong>
+                  </p>
+                  <p className="text-xs text-gray-500 dark:text-gray-400 mt-2">
+                    All licenses are authentic and properly sourced. See our{" "}
                     <a
-                      href="https://www.Bigbl.com/refund-policy"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-blue-600 dark:text-blue-400 underline"
+                      href="/about"
+                      className="text-blue-600 dark:text-blue-400 underline hover:text-blue-700"
                     >
-                      Learn more
-                    </a>
+                      About Us
+                    </a>{" "}
+                    page for more information.
                   </p>
                 </section>
 
                 {/* Add to Cart */}
-                {product.stock > 0 ? (
+                {isAvailable ? (
                   <div className="pt-4">
                     <AddToCart
                       cart={cart}
@@ -281,9 +272,17 @@ const ProductDetailsPage = async (props: {
                     />
                   </div>
                 ) : (
-                  <p className="pt-2 text-sm text-red-600 dark:text-red-400">
-                    This product is currently out of stock.
-                  </p>
+                  <div className="pt-2">
+                    <p className="text-sm text-red-600 dark:text-red-400 mb-2">
+                      This product is temporarily unavailable.
+                    </p>
+                    <a
+                      href="/contact"
+                      className="text-sm text-blue-600 dark:text-blue-400 underline hover:text-blue-700"
+                    >
+                      Contact us for availability
+                    </a>
+                  </div>
                 )}
               </CardContent>
             </Card>

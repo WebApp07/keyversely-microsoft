@@ -118,7 +118,7 @@ export default function FAQPage() {
         <p className="text-gray-700 dark:text-gray-300 mb-4">
           Check our detailed{" "}
           <a
-            href="/help"
+            href="/help-center"
             className="text-blue-600 dark:text-blue-400 hover:underline"
           >
             Help Center
