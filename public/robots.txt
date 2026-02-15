@@ -1,0 +1,30 @@
+# robots.txt for actualkeys.com
+# Place this file in /public directory
+
+# Allow all crawlers
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://actualkeys.com/sitemap.xml
+
+# Block admin/api routes if you have them
+Disallow: /admin/
+Disallow: /api/
+Disallow: /_next/
+Disallow: /checkout/
+
+# Allow important pages
+Allow: /about
+Allow: /contact
+Allow: /products
+Allow: /help
+Allow: /terms
+Allow: /privacy
+Allow: /refund-policy
+Allow: /return-policy
+Allow: /shipping-policy
+Allow: /payment-methods
+
+# Crawl delay (optional - only if getting crawled too aggressively)
+# Crawl-delay: 10
