@@ -14,13 +14,13 @@ Disallow: /api/
 Disallow: /_next/
 Disallow: /checkout/
 
-# Allow important pages
+# Allow important pages (matching your footer links)
 Allow: /about
 Allow: /contact
 Allow: /products
-Allow: /help
-Allow: /terms
-Allow: /privacy
+Allow: /terms-of-service
+Allow: /privacy-policy
+Allow: /help-center
 Allow: /refund-policy
 Allow: /return-policy
 Allow: /shipping-policy
