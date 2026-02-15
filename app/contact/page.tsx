@@ -78,7 +78,7 @@ export default function ContactPage() {
             Find answers to common questions about orders and activation
           </p>
           <a
-            href="/help"
+            href="/help-center"
             className="inline-block bg-secondary text-secondary-foreground px-4 py-2 rounded-md hover:bg-secondary/90 transition-colors"
           >
             Visit Help Center
@@ -155,7 +155,7 @@ export default function ContactPage() {
             </a>{" "}
             and{" "}
             <a
-              href="/terms"
+              href="/terms-of-services"
               className="text-blue-600 underline hover:text-blue-700"
             >
               terms of service
