@@ -13,8 +13,8 @@ export default function WhatsappButton() {
       }}
     >
       <FloatingWhatsApp
-        phoneNumber="+39758329526"
-        accountName="Sophia Isla"
+        phoneNumber="+13077856160"
+        accountName="Support Team"
         avatar="/badges/support.png" // optional: add your logo/avatar
         chatMessage="Hello 👋 How can we help you?"
         statusMessage="Online"
