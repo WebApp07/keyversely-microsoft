@@ -4,7 +4,6 @@ export const paypal = {
   createOrder: async function createOrder(price: number) {
     const accessToken = await generateAccessToken();
     const url = `${base}/v2/checkout/orders`;
-
     const response = await fetch(url, {
       method: "POST",
       headers: {
@@ -17,19 +16,18 @@ export const paypal = {
           {
             amount: {
               currency_code: "USD",
-              value: price.toFixed(2),
+              value: price,
             },
           },
         ],
       }),
     });
-
     return handleResponse(response);
   },
+
   capturePayment: async function capturePayment(orderId: string) {
     const accessToken = await generateAccessToken();
     const url = `${base}/v2/checkout/orders/${orderId}/capture`;
-
     const response = await fetch(url, {
       method: "POST",
       headers: {
@@ -41,13 +39,9 @@ export const paypal = {
   },
 };
 
-// Generate paypal access token
 async function generateAccessToken() {
   const { PAYPAL_CLIENT_ID, PAYPAL_APP_SECRET } = process.env;
-  const auth = Buffer.from(`${PAYPAL_CLIENT_ID}:${PAYPAL_APP_SECRET}`).toString(
-    "base64"
-  );
-
+  const auth = Buffer.from(`${PAYPAL_CLIENT_ID}:${PAYPAL_APP_SECRET}`).toString("base64");
   const response = await fetch(`${base}/v1/oauth2/token`, {
     method: "POST",
     body: "grant_type=client_credentials",
@@ -56,7 +50,6 @@ async function generateAccessToken() {
       "Content-Type": "application/x-www-form-urlencoded",
     },
   });
-
   const jsonData = await handleResponse(response);
   return jsonData.access_token;
 }
