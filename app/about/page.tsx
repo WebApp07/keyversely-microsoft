@@ -32,7 +32,7 @@ export default function AboutPage() {
         <div className="bg-white rounded-lg shadow-md p-8 mb-8">
           <h2 className="text-3xl font-bold text-gray-800 mb-6">Who We Are</h2>
           <p className="text-lg text-gray-700 mb-4">
-            KEYVERSELY LLC is a Wyoming-based digital products reseller
+            KEYVERSELY LLC is a Wyoming-based USA digital products reseller
             specializing in genuine Microsoft software licenses and digital
             products. Founded in 2025, we are committed to providing our
             customers with authentic, licensed software solutions at competitive
