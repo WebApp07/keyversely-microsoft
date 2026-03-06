@@ -3,7 +3,6 @@
 
 import React from "react";
 import Link from "next/link";
-import Image from "next/image";
 
 const LINKS = [
   { href: "/about", label: "About Us" },
@@ -41,7 +40,7 @@ const Footer = () => {
 
       {/* Microsoft Partner Badge */}
       <div className="border-t border-gray-200 dark:border-gray-800">
-        <div className="max-w-7xl mx-auto px-4 py-6 flex flex-col items-center gap-3">
+        <div className="max-w-7xl mx-auto px-4 py-6 flex flex-col items-center gap-2">
           <p className="text-xs font-semibold uppercase tracking-widest text-gray-500 dark:text-gray-400">
             Verified Partner
           </p>
@@ -50,19 +49,32 @@ const Footer = () => {
             target="_blank"
             rel="noopener noreferrer"
             aria-label="View Keyversely LLC Microsoft Partner Network Profile"
-            className="flex flex-col items-center gap-1 group"
+            className="group flex flex-col items-center gap-2 no-underline"
           >
-            <Image
-              src="/partners/microsoft-partner.png"
-              alt="Microsoft Partner Network – Keyversely LLC"
-              width={150}
-              height={50}
-              className="transition group-hover:scale-105"
-            />
-            <span className="text-xs font-semibold text-blue-600 dark:text-blue-400 group-hover:underline">
-              Partner ID: f2266aa5
-            </span>
-            <span className="text-xs text-gray-500 dark:text-gray-400 group-hover:text-gray-700 transition">
+            {/* CSS Badge — no image file needed */}
+            <div className="flex items-center gap-2 border border-gray-300 dark:border-gray-600 rounded-lg px-5 py-3 bg-white dark:bg-gray-800 shadow-sm group-hover:border-blue-500 transition">
+              {/* Microsoft 4-color squares logo */}
+              <svg
+                width="22"
+                height="22"
+                viewBox="0 0 21 21"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <rect x="0" y="0" width="10" height="10" fill="#F25022" />
+                <rect x="11" y="0" width="10" height="10" fill="#7FBA00" />
+                <rect x="0" y="11" width="10" height="10" fill="#00A4EF" />
+                <rect x="11" y="11" width="10" height="10" fill="#FFB900" />
+              </svg>
+              <div className="flex flex-col leading-tight">
+                <span className="text-xs font-bold text-gray-800 dark:text-gray-100 tracking-wide">
+                  Microsoft Partner
+                </span>
+                <span className="text-xs text-gray-500 dark:text-gray-400">
+                  Partner ID: f2266aa5
+                </span>
+              </div>
+            </div>
+            <span className="text-xs text-blue-600 dark:text-blue-400 group-hover:underline">
               View Official Partner Profile →
             </span>
           </a>
