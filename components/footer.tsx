@@ -1,109 +1,183 @@
-// app/components/Footer.tsx
 import Link from "next/link";
-
-const LINKS = [
-  { href: "/about", label: "About Us" },
-  { href: "/terms-of-service", label: "Terms of Service" },
-  { href: "/privacy-policy", label: "Privacy Policy" },
-  { href: "/help-center", label: "Help Center" },
-  { href: "/refund-policy", label: "Refund Policy" },
-  { href: "/contact", label: "Contact Us" },
-  { href: "/payment-methods", label: "Payment Methods" },
-  { href: "/shipping-policy", label: "Shipping Policy" },
-  { href: "/return-policy", label: "Return Policy" },
-];
+import Image from "next/image";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
-  const LEGAL_NAME = "KEYVERSELY LLC"; // Your legal business name
-  const DOMAIN_NAME = "ActualKeys.com"; // Your chosen domain (or leave blank if same as legal name)
 
   return (
-    <footer className="border-t bg-gray-50 dark:bg-gray-900">
-      {/* Links Section */}
-      <div className="max-w-7xl mx-auto px-4 py-8">
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
-          {LINKS.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              className="text-sm text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 hover:underline"
-            >
-              {link.label}
-            </Link>
-          ))}
-        </div>
-      </div>
-
-      {/* Legal Information Section - CRITICAL FOR GMC */}
-      <div className="border-t border-gray-200 dark:border-gray-800">
-        <div className="max-w-7xl mx-auto px-4 py-6">
-          <div className="flex flex-col items-center space-y-3 text-center">
-            {/* Copyright and Legal Name */}
-            <p className="text-sm text-gray-700 dark:text-gray-300">
-              © {currentYear} <strong>{LEGAL_NAME}</strong>. All Rights
-              Reserved.
+    <footer className="border-t bg-muted/40" aria-label="Site footer">
+      <div className="container mx-auto px-6 py-10">
+        {/* Top Section */}
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+          {/* Company Info */}
+          <div>
+            <h2 className="font-semibold text-lg mb-3">Keyversely LLC</h2>
+            <p className="text-sm text-muted-foreground leading-relaxed">
+              Keyversely LLC is a registered software distribution company and
+              verified member of the Microsoft Partner Network. We sell digital
+              software license keys with secure payment processing and instant
+              digital delivery worldwide.
             </p>
-
-            {/* Domain Operation (if different from legal name) */}
-            {DOMAIN_NAME && (
-              <p className="text-xs text-gray-600 dark:text-gray-400">
-                Operating at {DOMAIN_NAME}
-              </p>
-            )}
-
-            {/* Business Address - REQUIRED FOR GMC */}
-            <p className="text-xs text-gray-600 dark:text-gray-400">
-              63 N Burritt Ave Rm 100 PMB 1180, Buffalo, Wyoming 82834, United
-              States
-            </p>
-
-            {/* EIN - Adds Credibility */}
-            <p className="text-xs text-gray-500 dark:text-gray-500">
-              EIN: 61-2315882
-            </p>
-
-            {/* Contact Email */}
-            <p className="text-xs text-gray-600 dark:text-gray-400">
-              Email:{" "}
-              <a
-                href="mailto:support@keyversely.com"
-                className="text-blue-600 dark:text-blue-400 hover:underline"
+            {/* Social Media */}
+            <div className="flex gap-3 mt-4">
+              
+                href="https://facebook.com/keyversely"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Keyversely LLC on Facebook"
+                className="text-muted-foreground hover:text-foreground transition"
               >
-                support@keyversely.com
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M22 12c0-5.522-4.478-10-10-10S2 6.478 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987H7.898V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" />
+                </svg>
               </a>
-            </p>
-
-            {/* Business Hours */}
-            <p className="text-xs text-gray-500 dark:text-gray-500">
-              Support Hours: Monday - Friday, 9:00 AM - 7:00 PM EST
-            </p>
-
-            {/* Microsoft Disclaimer */}
-            <p className="text-xs text-gray-500 dark:text-gray-500 max-w-3xl mt-4">
-              Microsoft, Windows, Office, and other Microsoft product names are
-              trademarks or registered trademarks of Microsoft Corporation.{" "}
-              {LEGAL_NAME} is an independent reseller and is not affiliated
-              with, endorsed by, or sponsored by Microsoft Corporation.
-            </p>
+              
+                href="https://instagram.com/keyversely"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Keyversely LLC on Instagram"
+                className="text-muted-foreground hover:text-foreground transition"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M12 2.163c3.204 0 3.584.012 4.85.07 1.366.062 2.633.334 3.608 1.308.975.975 1.246 2.242 1.308 3.608.058 1.266.07 1.646.07 4.85s-.012 3.584-.07 4.85c-.062 1.366-.334 2.633-1.308 3.608-.975.975-2.242 1.246-3.608 1.308-1.266.058-1.646.07-4.85.07s-3.584-.012-4.85-.07c-1.366-.062-2.633-.334-3.608-1.308-.975-.975-1.246-2.242-1.308-3.608C2.175 15.584 2.163 15.204 2.163 12s.012-3.584.07-4.85c.062-1.366.334-2.633 1.308-3.608.975-.975 2.242-1.246 3.608-1.308C8.416 2.175 8.796 2.163 12 2.163zm0-2.163C8.741 0 8.332.014 7.052.072 5.197.157 3.355.673 2.014 2.014.673 3.355.157 5.197.072 7.052.014 8.332 0 8.741 0 12c0 3.259.014 3.668.072 4.948.085 1.855.601 3.697 1.942 5.038 1.341 1.341 3.183 1.857 5.038 1.942C8.332 23.986 8.741 24 12 24s3.668-.014 4.948-.072c1.855-.085 3.697-.601 5.038-1.942 1.341-1.341 1.857-3.183 1.942-5.038.058-1.28.072-1.689.072-4.948s-.014-3.668-.072-4.948c-.085-1.855-.601-3.697-1.942-5.038C20.645.673 18.803.157 16.948.072 15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zm0 10.162a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z" />
+                </svg>
+              </a>
+            </div>
           </div>
+
+          {/* Partner Badges */}
+          <div className="flex flex-col items-center justify-center gap-6">
+            <p className="text-xs font-700 uppercase tracking-widest text-muted-foreground">
+              Official Partners
+            </p>
+
+            {/* Microsoft Partner */}
+            
+              href="https://marketplace.microsoft.com/en-us/partners/f2266aa5-5704-4384-ad55-100cf2c530cb/overview"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="View Keyversely LLC Microsoft Partner Profile"
+              className="flex flex-col items-center gap-2 group"
+            >
+              <Image
+                src="/images/partners/microsoft-partner.png"
+                alt="Microsoft Partner Network – Keyversely LLC Reseller CSP"
+                width={150}
+                height={50}
+                className="transition group-hover:scale-105"
+              />
+              <span className="text-xs text-muted-foreground group-hover:text-foreground transition">
+                View Partner Profile →
+              </span>
+            </a>
+
+            {/* Adobe Partner — add your link when ready */}
+            
+              href="#"
+              aria-label="Adobe Certified Reseller – Keyversely LLC"
+              className="flex flex-col items-center gap-2 group opacity-60 cursor-default"
+            >
+              <Image
+                src="/images/partners/adobepartner.png"
+                alt="Adobe Certified Reseller – Keyversely LLC"
+                width={150}
+                height={50}
+                className="transition group-hover:scale-105"
+              />
+              <span className="text-xs text-muted-foreground">
+                Adobe Reseller
+              </span>
+            </a>
+          </div>
+
+          {/* Company Links */}
+          <div>
+            <h3 className="font-semibold text-lg mb-3">Company</h3>
+            <nav aria-label="Footer navigation">
+              <ul className="space-y-2 text-sm text-muted-foreground">
+                <li><Link href="/about" title="About Keyversely LLC">About Us</Link></li>
+                <li><Link href="/contact" title="Contact Keyversely LLC">Contact</Link></li>
+                <li><Link href="/privacy-policy" title="Keyversely Privacy Policy">Privacy Policy</Link></li>
+                <li><Link href="/terms" title="Terms and Conditions">Terms &amp; Conditions</Link></li>
+                <li><Link href="/refund-policy" title="Software License Refund Policy">Refund Policy</Link></li>
+              </ul>
+            </nav>
+          </div>
+
+          {/* Contact & Trust */}
+          <div>
+            <h3 className="font-semibold text-lg mb-3">Contact Us</h3>
+            <ul className="space-y-2 text-sm text-muted-foreground">
+              <li>
+                <a href="mailto:support@keyversely.com" className="hover:text-foreground transition">
+                  support@keyversely.com
+                </a>
+              </li>
+              <li>
+                <a href="tel:+13077856160" className="hover:text-foreground transition">
+                  +1 (307) 785-6160
+                </a>
+              </li>
+              <li>
+                63 N Burritt Ave, Rm 100 PMB 1180<br />
+                Buffalo, Wyoming 82834, USA
+              </li>
+            </ul>
+
+            <h3 className="font-semibold text-lg mt-5 mb-3">Trust &amp; Security</h3>
+            <ul className="space-y-1 text-sm text-muted-foreground">
+              <li>✔ Registered Wyoming LLC</li>
+              <li>✔ Microsoft Partner Network Member</li>
+              <li>✔ Secure Payment Processing</li>
+              <li>✔ Instant Digital Delivery</li>
+            </ul>
+          </div>
+        </div>
+
+        {/* Bottom Bar */}
+        <div className="border-t pt-6 text-center text-sm text-muted-foreground">
+          <p>© {currentYear} Keyversely LLC. All rights reserved.</p>
+          <p className="mt-1 text-xs">
+            Digital software license keys — secure payment, instant ESD delivery worldwide.
+          </p>
         </div>
       </div>
 
-      {/* Optional: Payment/Security Badges */}
-      <div className="border-t border-gray-200 dark:border-gray-800 bg-gray-100 dark:bg-gray-950">
-        <div className="max-w-7xl mx-auto px-4 py-4">
-          <div className="flex flex-wrap justify-center items-center gap-4 text-xs text-gray-600 dark:text-gray-400">
-            <span>🔒 Secure Payment</span>
-            <span>•</span>
-            <span>📧 Instant Delivery</span>
-            <span>•</span>
-            <span>✅ Genuine Licenses</span>
-            <span>•</span>
-            <span>🛡️ SSL Encrypted</span>
-          </div>
-        </div>
-      </div>
+      {/* JSON-LD Structured Data */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Organization",
+            name: "Keyversely LLC",
+            url: "https://keyversely.com",
+            logo: "https://keyversely.com/images/logo.png",
+            description:
+              "Keyversely LLC is a registered Wyoming LLC and verified Microsoft Partner Network member, specializing in digital software license key distribution. Instant ESD delivery worldwide.",
+            address: {
+              "@type": "PostalAddress",
+              streetAddress: "63 N Burritt Ave, Rm 100 PMB 1180",
+              addressLocality: "Buffalo",
+              addressRegion: "WY",
+              postalCode: "82834",
+              addressCountry: "US",
+            },
+            contactPoint: {
+              "@type": "ContactPoint",
+              telephone: "+1-307-785-6160",
+              contactType: "customer support",
+              email: "support@keyversely.com",
+              url: "https://keyversely.com/contact",
+            },
+            sameAs: [
+              "https://facebook.com/keyversely",
+              "https://instagram.com/keyversely",
+              "https://marketplace.microsoft.com/en-us/partners/f2266aa5-5704-4384-ad55-100cf2c530cb/overview",
+            ],
+          }),
+        }}
+      />
     </footer>
   );
 };
