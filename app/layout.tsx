@@ -10,7 +10,6 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 
 const inter = Inter({ subsets: ["latin"] });
 
-// ✅ Facebook Pixel ID from environment
 const FB_PIXEL_ID = process.env.NEXT_PUBLIC_FACEBOOK_PIXEL_ID;
 
 export const metadata: Metadata = {
@@ -52,7 +51,31 @@ export default function RootLayout({
         )}
 
         {/* ===================================================== */}
-        {/* ✅ Facebook Pixel (optional – you can also move this to GTM later) */}
+        {/* ✅ Google Ads (gtag.js) */}
+        {isProduction && (
+          <>
+            <Script
+              id="gtag-js"
+              strategy="afterInteractive"
+              src="https://www.googletagmanager.com/gtag/js?id=AW-17934054621"
+            />
+            <Script
+              id="gtag-config"
+              strategy="afterInteractive"
+              dangerouslySetInnerHTML={{
+                __html: `
+                  window.dataLayer = window.dataLayer || [];
+                  function gtag(){dataLayer.push(arguments);}
+                  gtag('js', new Date());
+                  gtag('config', 'AW-17934054621');
+                `,
+              }}
+            />
+          </>
+        )}
+
+        {/* ===================================================== */}
+        {/* ✅ Facebook Pixel */}
         {isProduction && FB_PIXEL_ID && (
           <>
             <Script
