@@ -1,186 +1,152 @@
+// app/components/Footer.tsx
 "use client";
 
 import React from "react";
 import Link from "next/link";
-import Image from "next/image";
+
+const LINKS = [
+  { href: "/about", label: "About Us" },
+  { href: "/terms-of-service", label: "Terms of Service" },
+  { href: "/privacy-policy", label: "Privacy Policy" },
+  { href: "/help-center", label: "Help Center" },
+  { href: "/refund-policy", label: "Refund Policy" },
+  { href: "/contact", label: "Contact Us" },
+  { href: "/payment-methods", label: "Payment Methods" },
+  { href: "/shipping-policy", label: "Shipping Policy" },
+  { href: "/return-policy", label: "Return Policy" },
+];
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
+  const LEGAL_NAME = "KEYVERSELY LLC";
+  const DOMAIN_NAME = "ActualKeys.com";
 
   return (
-    <footer className="border-t bg-muted/40" aria-label="Site footer">
-      <div className="container mx-auto px-6 py-10">
-
-        {/* Main Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
-
-          {/* Column 1 — Company Info & Registration */}
-          <div>
-            <h2 className="font-semibold text-lg mb-3">Keyversely LLC</h2>
-            <p className="text-sm text-muted-foreground leading-relaxed mb-4">
-              Keyversely LLC is a registered US-based digital software reseller
-              and verified member of the Microsoft Partner Network. We provide
-              digital license keys with instant ESD delivery worldwide.
-            </p>
-            <ul className="text-xs text-muted-foreground space-y-1">
-              <li><span className="font-semibold text-foreground">Entity ID:</span> 2025-001824045</li>
-              <li><span className="font-semibold text-foreground">Entity Type:</span> LLC</li>
-              <li><span className="font-semibold text-foreground">State:</span> Wyoming — Active / Good Standing</li>
-              <li><span className="font-semibold text-foreground">Formed:</span> November 24, 2025</li>
-            </ul>
-          </div>
-
-          {/* Column 2 — Microsoft Partner Badge */}
-          <div className="flex flex-col items-center justify-start gap-4 pt-1">
-            <p className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">
-              Verified Partner
-            </p>
-            <a
-              href="https://marketplace.microsoft.com/en-us/partners/f2266aa5-5704-4384-ad55-100cf2c530cb/overview"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="View Keyversely LLC Microsoft Partner Network Profile"
-              className="flex flex-col items-center gap-2 group border border-border rounded-xl p-4 hover:border-blue-400 transition"
+    <footer className="border-t bg-gray-50 dark:bg-gray-900">
+      {/* Links Section */}
+      <div className="max-w-7xl mx-auto px-4 py-8">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+          {LINKS.map((link) => (
+            <Link
+              key={link.href}
+              href={link.href}
+              className="text-sm text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 hover:underline"
             >
-              <Image
-                src="/images/partners/microsoft-partner.png"
-                alt="Microsoft Partner Network – Keyversely LLC Reseller CSP"
-                width={140}
-                height={48}
-                className="transition group-hover:scale-105"
-              />
-              <span className="text-xs font-semibold text-blue-600 group-hover:underline">
-                Partner ID: f2266aa5
-              </span>
-              <span className="text-xs text-muted-foreground group-hover:text-foreground transition">
-                View Official Partner Profile →
-              </span>
-            </a>
-
-            {/* Payment Methods */}
-            <div className="mt-2 text-center">
-              <p className="text-xs font-semibold uppercase tracking-widest text-muted-foreground mb-2">
-                Secure Payments
-              </p>
-              <div className="flex gap-2 items-center justify-center flex-wrap">
-                <span className="text-xs bg-muted border border-border rounded px-2 py-1 font-medium">Stripe</span>
-                <span className="text-xs bg-muted border border-border rounded px-2 py-1 font-medium">PayPal</span>
-                <span className="text-xs bg-muted border border-border rounded px-2 py-1 font-medium">Visa</span>
-                <span className="text-xs bg-muted border border-border rounded px-2 py-1 font-medium">Mastercard</span>
-              </div>
-            </div>
-          </div>
-
-          {/* Column 3 — Policy Links */}
-          <div>
-            <h3 className="font-semibold text-lg mb-3">Policies</h3>
-            <nav aria-label="Footer policy links">
-              <ul className="space-y-2 text-sm text-muted-foreground">
-                <li>
-                  <Link href="/privacy-policy" title="Keyversely Privacy Policy" className="hover:text-foreground transition">
-                    Privacy Policy
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/terms" title="Terms and Conditions" className="hover:text-foreground transition">
-                    Terms &amp; Conditions
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/refund-policy" title="Refund Policy" className="hover:text-foreground transition">
-                    Refund Policy
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/return-policy" title="Return Policy" className="hover:text-foreground transition">
-                    Return Policy
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/delivery-return" title="Delivery Information" className="hover:text-foreground transition">
-                    Delivery Information
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/warranty-policy" title="Warranty Policy" className="hover:text-foreground transition">
-                    Warranty Policy
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/cookies-policy" title="Cookies Policy" className="hover:text-foreground transition">
-                    Cookies Policy
-                  </Link>
-                </li>
-              </ul>
-            </nav>
-          </div>
-
-          {/* Column 4 — Contact Info */}
-          <div>
-            <h3 className="font-semibold text-lg mb-3">Contact Us</h3>
-            <ul className="space-y-3 text-sm text-muted-foreground">
-              <li>
-                <span className="font-semibold text-foreground block mb-0.5">Email</span>
-                <a href="mailto:support@keyversely.com" className="hover:text-foreground transition">
-                  support@keyversely.com
-                </a>
-              </li>
-              <li>
-                <span className="font-semibold text-foreground block mb-0.5">Phone</span>
-                <a href="tel:+13077856160" className="hover:text-foreground transition">
-                  +1 (307) 785-6160
-                </a>
-              </li>
-              <li>
-                <span className="font-semibold text-foreground block mb-0.5">WhatsApp</span>
-                <a
-                  href="https://wa.me/13077856160"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:text-foreground transition"
-                >
-                  +1 (307) 785-6160
-                </a>
-              </li>
-              <li>
-                <span className="font-semibold text-foreground block mb-0.5">Address</span>
-                63 N Burritt Ave, Rm 100 PMB 1180<br />
-                Buffalo, Wyoming 82834<br />
-                United States
-              </li>
-            </ul>
-
-            {/* Trust Signals */}
-            <div className="mt-5">
-              <h3 className="font-semibold text-sm mb-2">Trust &amp; Security</h3>
-              <ul className="space-y-1 text-xs text-muted-foreground">
-                <li>✔ Registered Wyoming LLC</li>
-                <li>✔ Microsoft Partner Network Member</li>
-                <li>✔ Encrypted Payment Processing</li>
-                <li>✔ Instant ESD Digital Delivery</li>
-                <li>✔ 24/7 Customer Support</li>
-              </ul>
-            </div>
-          </div>
-
+              {link.label}
+            </Link>
+          ))}
         </div>
-
-        {/* Bottom Bar */}
-        <div className="border-t pt-6 flex flex-col md:flex-row items-center justify-between gap-3 text-sm text-muted-foreground">
-          <p>© {currentYear} Keyversely LLC. All rights reserved.</p>
-          <p className="text-xs text-center">
-            Digital software license keys — secure payment, instant ESD delivery worldwide.
-          </p>
-          <nav aria-label="Footer company links" className="flex gap-4 text-xs">
-            <Link href="/about" className="hover:text-foreground transition">About Us</Link>
-            <Link href="/contact" className="hover:text-foreground transition">Contact</Link>
-            <Link href="/faqs" className="hover:text-foreground transition">FAQs</Link>
-          </nav>
-        </div>
-
       </div>
 
-      {/* JSON-LD Structured Data — GMC Compliant */}
+      {/* Microsoft Partner Badge */}
+      <div className="border-t border-gray-200 dark:border-gray-800">
+        <div className="max-w-7xl mx-auto px-4 py-6 flex flex-col items-center gap-2">
+          <p className="text-xs font-semibold uppercase tracking-widest text-gray-500 dark:text-gray-400">
+            Verified Partner
+          </p>
+          <a
+            href="https://marketplace.microsoft.com/en-us/partners/f2266aa5-5704-4384-ad55-100cf2c530cb/overview"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="View Keyversely LLC Microsoft Partner Network Profile"
+            className="group flex flex-col items-center gap-2 no-underline"
+          >
+            {/* CSS Badge — no image file needed */}
+            <div className="flex items-center gap-2 border border-gray-300 dark:border-gray-600 rounded-lg px-5 py-3 bg-white dark:bg-gray-800 shadow-sm group-hover:border-blue-500 transition">
+              {/* Microsoft 4-color squares logo */}
+              <svg width="22" height="22" viewBox="0 0 21 21" xmlns="http://www.w3.org/2000/svg">
+                <rect x="0" y="0" width="10" height="10" fill="#F25022" />
+                <rect x="11" y="0" width="10" height="10" fill="#7FBA00" />
+                <rect x="0" y="11" width="10" height="10" fill="#00A4EF" />
+                <rect x="11" y="11" width="10" height="10" fill="#FFB900" />
+              </svg>
+              <div className="flex flex-col leading-tight">
+                <span className="text-xs font-bold text-gray-800 dark:text-gray-100 tracking-wide">
+                  Microsoft Partner
+                </span>
+                <span className="text-xs text-gray-500 dark:text-gray-400">
+                  Partner ID: f2266aa5
+                </span>
+              </div>
+            </div>
+            <span className="text-xs text-blue-600 dark:text-blue-400 group-hover:underline">
+              View Official Partner Profile →
+            </span>
+          </a>
+        </div>
+      </div>
+
+      {/* Legal Information Section - CRITICAL FOR GMC */}
+      <div className="border-t border-gray-200 dark:border-gray-800">
+        <div className="max-w-7xl mx-auto px-4 py-6">
+          <div className="flex flex-col items-center space-y-3 text-center">
+            {/* Copyright and Legal Name */}
+            <p className="text-sm text-gray-700 dark:text-gray-300">
+              © {currentYear} <strong>{LEGAL_NAME}</strong>. All Rights
+              Reserved.
+            </p>
+
+            {/* Domain Operation (if different from legal name) */}
+            {DOMAIN_NAME && (
+              <p className="text-xs text-gray-600 dark:text-gray-400">
+                Operating at {DOMAIN_NAME}
+              </p>
+            )}
+
+            {/* Business Address - REQUIRED FOR GMC */}
+            <p className="text-xs text-gray-600 dark:text-gray-400">
+              63 N Burritt Ave Rm 100 PMB 1180, Buffalo, Wyoming 82834, United
+              States
+            </p>
+
+            {/* EIN - Adds Credibility */}
+            <p className="text-xs text-gray-500 dark:text-gray-500">
+              EIN: 61-2315882
+            </p>
+
+            {/* Contact Email */}
+            <p className="text-xs text-gray-600 dark:text-gray-400">
+              Email:{" "}
+              <a
+                href="mailto:support@keyversely.com"
+                className="text-blue-600 dark:text-blue-400 hover:underline"
+              >
+                support@keyversely.com
+              </a>
+            </p>
+
+            {/* Business Hours */}
+            <p className="text-xs text-gray-500 dark:text-gray-500">
+              Support Hours: Monday - Friday, 9:00 AM - 6:00 PM EST
+            </p>
+
+            {/* Microsoft Disclaimer */}
+            <p className="text-xs text-gray-500 dark:text-gray-500 max-w-3xl mt-4">
+              Microsoft, Windows, Office, and other Microsoft product names are
+              trademarks or registered trademarks of Microsoft Corporation.{" "}
+              {LEGAL_NAME} is an independent reseller and is not affiliated
+              with, endorsed by, or sponsored by Microsoft Corporation.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      {/* Payment/Security Badges */}
+      <div className="border-t border-gray-200 dark:border-gray-800 bg-gray-100 dark:bg-gray-950">
+        <div className="max-w-7xl mx-auto px-4 py-4">
+          <div className="flex flex-wrap justify-center items-center gap-4 text-xs text-gray-600 dark:text-gray-400">
+            <span>🔒 Secure Payment</span>
+            <span>•</span>
+            <span>📧 Instant Delivery</span>
+            <span>•</span>
+            <span>✅ Digital License Keys</span>
+            <span>•</span>
+            <span>🛡️ SSL Encrypted</span>
+          </div>
+        </div>
+      </div>
+
+      {/* JSON-LD Structured Data */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
@@ -188,33 +154,33 @@ const Footer = () => {
             "@context": "https://schema.org",
             "@type": "Organization",
             name: "Keyversely LLC",
-            url: "https://keyversely.com",
-            logo: "https://keyversely.com/wp-content/uploads/2026/02/logo-1111.png",
+            legalName: "KEYVERSELY LLC",
+            url: "https://actualkeys.com",
             description:
-              "Keyversely LLC is a registered Wyoming LLC and verified Microsoft Partner Network member. We specialize in digital software license key distribution with instant ESD delivery worldwide.",
-            legalName: "Keyversely LLC",
+              "Keyversely LLC is a registered Wyoming LLC and verified Microsoft Partner Network member, specializing in digital software license key distribution with instant delivery worldwide.",
             foundingDate: "2025",
             address: {
               "@type": "PostalAddress",
-              streetAddress: "63 N Burritt Ave, Rm 100 PMB 1180",
+              streetAddress: "63 N Burritt Ave Rm 100 PMB 1180",
               addressLocality: "Buffalo",
               addressRegion: "WY",
               postalCode: "82834",
               addressCountry: "US",
             },
-            contactPoint: [
-              {
-                "@type": "ContactPoint",
-                telephone: "+1-307-785-6160",
-                contactType: "customer support",
-                email: "support@keyversely.com",
-                availableLanguage: "English",
-                contactOption: "TollFree",
+            contactPoint: {
+              "@type": "ContactPoint",
+              contactType: "customer support",
+              email: "support@keyversely.com",
+              url: "https://actualkeys.com/contact",
+              availableLanguage: "English",
+              hoursAvailable: {
+                "@type": "OpeningHoursSpecification",
+                dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+                opens: "09:00",
+                closes: "18:00",
               },
-            ],
+            },
             sameAs: [
-              "https://facebook.com/keyversely",
-              "https://instagram.com/keyversely",
               "https://marketplace.microsoft.com/en-us/partners/f2266aa5-5704-4384-ad55-100cf2c530cb/overview",
             ],
           }),
