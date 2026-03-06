@@ -23,7 +23,7 @@ const Footer = () => {
             </p>
             {/* Social Media */}
             <div className="flex gap-3 mt-4">
-              
+              <a
                 href="https://facebook.com/keyversely"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -34,7 +34,7 @@ const Footer = () => {
                   <path d="M22 12c0-5.522-4.478-10-10-10S2 6.478 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987H7.898V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" />
                 </svg>
               </a>
-              
+              <a
                 href="https://instagram.com/keyversely"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -50,12 +50,10 @@ const Footer = () => {
 
           {/* Partner Badges */}
           <div className="flex flex-col items-center justify-center gap-6">
-            <p className="text-xs font-700 uppercase tracking-widest text-muted-foreground">
+            <p className="text-xs uppercase tracking-widest text-muted-foreground font-semibold">
               Official Partners
             </p>
-
-            {/* Microsoft Partner */}
-            
+            <a
               href="https://marketplace.microsoft.com/en-us/partners/f2266aa5-5704-4384-ad55-100cf2c530cb/overview"
               target="_blank"
               rel="noopener noreferrer"
@@ -71,24 +69,6 @@ const Footer = () => {
               />
               <span className="text-xs text-muted-foreground group-hover:text-foreground transition">
                 View Partner Profile →
-              </span>
-            </a>
-
-            {/* Adobe Partner — add your link when ready */}
-            
-              href="#"
-              aria-label="Adobe Certified Reseller – Keyversely LLC"
-              className="flex flex-col items-center gap-2 group opacity-60 cursor-default"
-            >
-              <Image
-                src="/images/partners/adobepartner.png"
-                alt="Adobe Certified Reseller – Keyversely LLC"
-                width={150}
-                height={50}
-                className="transition group-hover:scale-105"
-              />
-              <span className="text-xs text-muted-foreground">
-                Adobe Reseller
               </span>
             </a>
           </div>
