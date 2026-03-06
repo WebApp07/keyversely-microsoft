@@ -478,3 +478,16 @@ export async function deliverOrder(orderId: string) {
     return { success: false, message: formatError(error) };
   }
 }
+
+// Get latest Order
+export async function getLatestOrder() {
+  const session = await auth();
+  if (!session) return null;
+
+  const order = await prisma.order.findFirst({
+    where: { userId: session.user.id },
+    orderBy: { createdAt: "desc" },
+  });
+
+  return convertToPlainObject(order);
+}
