@@ -79,7 +79,7 @@ export default function PurchaseReceiptEmail({ order }: OrderInformationProps) {
               <Row>
                 <Column>
                   <Text className="mb-0 mr-4 text-gray-500 whitespace-nowrap text-nowrap">
-                    Order ID
+                    Order id
                   </Text>
                   <Text className="mt-0 mr-4">{order.id.toString()}</Text>
                 </Column>
