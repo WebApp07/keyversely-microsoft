@@ -2,7 +2,7 @@
 
 import { isRedirectError } from "next/dist/client/components/redirect-error";
 import { convertToPlainObject, formatError } from "../utils";
-import { auth } from "@/auth";
+import { auth } from "@/lib/auth";
 import { getMyCart } from "./cart.actions";
 import { getUserById } from "./user.actions";
 import { insertOrderSchema } from "../validators";
@@ -163,7 +163,7 @@ export async function createPayPalOrder(orderId: string) {
 // Approve paypal order and update order to paid
 export async function approvePayPalOrder(
   orderId: string,
-  data: { orderID: string }
+  data: { orderID: string },
 ) {
   try {
     // Get order from database

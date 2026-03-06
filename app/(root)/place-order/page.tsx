@@ -1,4 +1,4 @@
-import { auth } from "@/auth";
+import { auth } from "@/lib/auth";
 import CheckoutSteps from "@/components/shared/checkout-steps";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";

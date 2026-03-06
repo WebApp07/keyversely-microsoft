@@ -3,7 +3,7 @@
 import { cookies } from "next/headers";
 import { CartItem } from "@/types";
 import { convertToPlainObject, formatError, round2 } from "../utils";
-import { auth } from "@/auth";
+import { auth } from "@/lib/auth";
 import { prisma } from "@/db/prisma";
 import { cartItemSchema, insertCartSchema } from "../validators";
 import { revalidatePath } from "next/cache";
@@ -12,7 +12,7 @@ import { Prisma } from "@prisma/client";
 // Calculate cart prices
 const calcPrice = (items: CartItem[]) => {
   const itemsPrice = round2(
-      items.reduce((acc, item) => acc + Number(item.price) * item.qty, 0)
+      items.reduce((acc, item) => acc + Number(item.price) * item.qty, 0),
     ),
     shippingPrice = round2(itemsPrice > 40 ? 0 : 0),
     taxPrice = round2(0 * itemsPrice),
@@ -72,7 +72,7 @@ export async function addItemToCart(data: CartItem) {
     } else {
       // Check if item is already in cart
       const existItem = (cart.items as CartItem[]).find(
-        (x) => x.productId === item.productId
+        (x) => x.productId === item.productId,
       );
 
       if (existItem) {
@@ -83,7 +83,7 @@ export async function addItemToCart(data: CartItem) {
 
         // Increase the quantity
         (cart.items as CartItem[]).find(
-          (x) => x.productId === item.productId
+          (x) => x.productId === item.productId,
         )!.qty = existItem.qty + 1;
       } else {
         // If item does not exist in cart
@@ -165,7 +165,7 @@ export async function removeItemFromCart(productId: string) {
 
     // Check for item
     const exist = (cart.items as CartItem[]).find(
-      (x) => x.productId === productId
+      (x) => x.productId === productId,
     );
     if (!exist) throw new Error("Item not found");
 
@@ -173,7 +173,7 @@ export async function removeItemFromCart(productId: string) {
     if (exist.qty === 1) {
       // Remove from cart
       cart.items = (cart.items as CartItem[]).filter(
-        (x) => x.productId !== exist.productId
+        (x) => x.productId !== exist.productId,
       );
     } else {
       // Decrease qty

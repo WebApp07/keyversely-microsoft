@@ -1,4 +1,4 @@
-import { auth } from "@/auth";
+import { auth } from "@/lib/auth";
 import { getUserById } from "@/lib/actions/user.actions";
 import { Metadata } from "next";
 import PaymentMethodForm from "./payment-method-form";

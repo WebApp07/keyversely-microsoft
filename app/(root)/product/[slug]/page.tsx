@@ -10,7 +10,7 @@ import ProductImages from "@/components/shared/product/product-images";
 import AddToCart from "@/components/shared/product/add-to-cart";
 import { getMyCart } from "@/lib/actions/cart.actions";
 import ReviewList from "./review-list";
-import { auth } from "@/auth";
+import { auth } from "@/lib/auth";
 import Rating from "@/components/shared/product/rating";
 import RelatedProducts from "@/components/RelatedProducts";
 import ProductFeatures from "@/components/shared/product/product-features";

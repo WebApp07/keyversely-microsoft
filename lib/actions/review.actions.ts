@@ -3,13 +3,13 @@
 import { z } from "zod";
 import { insertReviewSchema } from "../validators";
 import { formatError } from "../utils";
-import { auth } from "@/auth";
+import { auth } from "@/lib/auth";
 import { prisma } from "@/db/prisma";
 import { revalidatePath } from "next/cache";
 
 // Create & Update Reviews
 export async function createUpdateReview(
-  data: z.infer<typeof insertReviewSchema>
+  data: z.infer<typeof insertReviewSchema>,
 ) {
   try {
     const session = await auth();

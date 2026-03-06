@@ -10,7 +10,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { APP_NAME } from "@/lib/constants";
 import CrendentialsSigninForm from "./crendentials-signin-form";
-import { auth } from "@/auth";
+import { auth } from "@/lib/auth";
 import { redirect } from "next/navigation";
 
 export const metadata: Metadata = {

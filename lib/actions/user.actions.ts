@@ -7,7 +7,7 @@ import {
   paymentMethodSchema,
   updateUserSchema,
 } from "../validators";
-import { auth, signIn, signOut } from "@/auth";
+import { auth, signIn, signOut } from "@/lib/auth";
 import { isRedirectError } from "next/dist/client/components/redirect-error";
 import { hash } from "../encrypt";
 import { prisma } from "@/db/prisma";
@@ -22,7 +22,7 @@ import { getMyCart } from "./cart.actions";
 // Sign in the user with credentials
 export async function signInWithCredentials(
   prevState: unknown,
-  formData: FormData
+  formData: FormData,
 ) {
   try {
     const user = signInFormSchema.parse({
@@ -128,7 +128,7 @@ export async function updateUserAddress(data: ShippingAddress) {
 
 // Update user's payment method
 export async function updateUserPaymentMethod(
-  data: z.infer<typeof paymentMethodSchema>
+  data: z.infer<typeof paymentMethodSchema>,
 ) {
   try {
     const session = await auth();

@@ -5,7 +5,7 @@ import CredentialsProvider from "next-auth/providers/credentials";
 import type { NextAuthConfig } from "next-auth";
 import { cookies } from "next/headers";
 import { NextResponse } from "next/server";
-import { compare } from "./lib/encrypt";
+import { compare } from "./encrypt";
 export const config = {
   pages: {
     signIn: "/sign-in",
@@ -39,7 +39,7 @@ export const config = {
         if (user && user.password) {
           const isMatch = await compare(
             credentials.password as string,
-            user.password
+            user.password,
           );
 
           // If password is correct, return user
