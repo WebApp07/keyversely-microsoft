@@ -76,7 +76,7 @@ const Footer = () => {
 
             {/* Business Hours */}
             <p className="text-xs text-gray-500 dark:text-gray-500">
-              Support Hours: Monday - Friday, 9:00 AM - 6:00 PM EST
+              Support Hours: Monday - Friday, 9:00 AM - 7:00 PM EST
             </p>
 
             {/* Microsoft Disclaimer */}
