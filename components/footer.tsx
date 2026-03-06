@@ -16,6 +16,41 @@ const LINKS = [
   { href: "/return-policy", label: "Return Policy" },
 ];
 
+const JSONLD = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: "Keyversely LLC",
+  legalName: "KEYVERSELY LLC",
+  url: "https://actualkeys.com",
+  description:
+    "Keyversely LLC is a registered Wyoming LLC and verified Microsoft Partner Network member, specializing in digital software license key distribution with instant delivery worldwide.",
+  foundingDate: "2025",
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: "63 N Burritt Ave Rm 100 PMB 1180",
+    addressLocality: "Buffalo",
+    addressRegion: "WY",
+    postalCode: "82834",
+    addressCountry: "US",
+  },
+  contactPoint: {
+    "@type": "ContactPoint",
+    contactType: "customer support",
+    email: "support@keyversely.com",
+    url: "https://actualkeys.com/contact",
+    availableLanguage: "English",
+    hoursAvailable: {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+      opens: "09:00",
+      closes: "18:00",
+    },
+  },
+  sameAs: [
+    "https://marketplace.microsoft.com/en-us/partners/f2266aa5-5704-4384-ad55-100cf2c530cb/overview",
+  ],
+};
+
 const Footer = () => {
   const currentYear = new Date().getFullYear();
   const LEGAL_NAME = "KEYVERSELY LLC";
@@ -51,9 +86,7 @@ const Footer = () => {
             aria-label="View Keyversely LLC Microsoft Partner Network Profile"
             className="group flex flex-col items-center gap-2 no-underline"
           >
-            {/* CSS Badge — no image file needed */}
             <div className="flex items-center gap-2 border border-gray-300 dark:border-gray-600 rounded-lg px-5 py-3 bg-white dark:bg-gray-800 shadow-sm group-hover:border-blue-500 transition">
-              {/* Microsoft 4-color squares logo */}
               <svg
                 width="22"
                 height="22"
@@ -85,31 +118,26 @@ const Footer = () => {
       <div className="border-t border-gray-200 dark:border-gray-800">
         <div className="max-w-7xl mx-auto px-4 py-6">
           <div className="flex flex-col items-center space-y-3 text-center">
-            {/* Copyright and Legal Name */}
             <p className="text-sm text-gray-700 dark:text-gray-300">
               © {currentYear} <strong>{LEGAL_NAME}</strong>. All Rights
               Reserved.
             </p>
 
-            {/* Domain Operation (if different from legal name) */}
             {DOMAIN_NAME && (
               <p className="text-xs text-gray-600 dark:text-gray-400">
                 Operating at {DOMAIN_NAME}
               </p>
             )}
 
-            {/* Business Address - REQUIRED FOR GMC */}
             <p className="text-xs text-gray-600 dark:text-gray-400">
               63 N Burritt Ave Rm 100 PMB 1180, Buffalo, Wyoming 82834, United
               States
             </p>
 
-            {/* EIN - Adds Credibility */}
             <p className="text-xs text-gray-500 dark:text-gray-500">
               EIN: 61-2315882
             </p>
 
-            {/* Contact Email */}
             <p className="text-xs text-gray-600 dark:text-gray-400">
               Email:{" "}
               <a
@@ -120,12 +148,10 @@ const Footer = () => {
               </a>
             </p>
 
-            {/* Business Hours */}
             <p className="text-xs text-gray-500 dark:text-gray-500">
               Support Hours: Monday - Friday, 9:00 AM - 6:00 PM EST
             </p>
 
-            {/* Microsoft Disclaimer */}
             <p className="text-xs text-gray-500 dark:text-gray-500 max-w-3xl mt-4">
               Microsoft, Windows, Office, and other Microsoft product names are
               trademarks or registered trademarks of Microsoft Corporation.{" "}
@@ -154,55 +180,7 @@ const Footer = () => {
       {/* JSON-LD Structured Data */}
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "Organization",
-            name: "Keyversely LLC",
-            legalName: "KEYVERSELY LLC",
-            url: "https://actualkeys.com",
-            description:
-              "Keyversely LLC is a registered Wyoming LLC and verified Microsoft Partner Network member, specializing in digital software license key distribution with instant delivery worldwide.",
-            foundingDate: "2025",
-            address: {
-              "@type": "PostalAddress",
-              streetAddress: "63 N Burritt Ave Rm 100 PMB 1180",
-              addressLocality: "Buffalo",
-              addressRegion: "WY",
-              postalCode: "82834",
-              addressCountry: "US",
-            },
-            contactPoint: {
-              "@type": "ContactPoint",
-              contactType: "customer support",
-              email: "support@keyversely.com",
-              url: "https://actualkeys.com/contact",
-              availableLanguage: "English",
-              hoursAvailable: {
-                "@type": "OpeningHoursSpecification",
-                dayOfWeek: [
-                  "Monday",
-                  "Tuesday",
-                  "Wednesday",
-                  "Thursday",
-                  "Friday",
-                ],
-                dayOfWeek: [
-                  "Monday",
-                  "Tuesday",
-                  "Wednesday",
-                  "Thursday",
-                  "Friday",
-                ],
-                opens: "09:00",
-                closes: "18:00",
-              },
-            },
-            sameAs: [
-              "https://marketplace.microsoft.com/en-us/partners/f2266aa5-5704-4384-ad55-100cf2c530cb/overview",
-            ],
-          }),
-        }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(JSONLD) }}
       />
     </footer>
   );
