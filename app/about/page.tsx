@@ -1,3 +1,4 @@
+// app/about/page.tsx
 import type { Metadata } from "next";
 import Header from "@/components/shared/header";
 import Footer from "@/components/footer";
@@ -5,15 +6,16 @@ import Footer from "@/components/footer";
 export const metadata: Metadata = {
   title: "About Us - KEYVERSELY LLC | Authorized Microsoft Reseller",
   description:
-    "Learn about KEYVERSELY LLC, your trusted source for genuine Microsoft digital products and software licenses. Authorized reseller based in Wyoming, USA.",
+    "Learn about KEYVERSELY LLC, your trusted source for genuine Microsoft digital products and software licenses. Authorized Microsoft Partner based in Wyoming, USA. Partner ID: f2266aa5",
   keywords:
-    "Microsoft reseller, software licenses, digital products, KEYVERSELY",
+    "Microsoft reseller, software licenses, digital products, KEYVERSELY, Microsoft Partner",
 };
 
 export default function AboutPage() {
   return (
     <div className="min-h-screen bg-gray-50">
       <Header />
+
       {/* Hero Section */}
       <section className="bg-gradient-to-r from-blue-600 to-blue-800 text-white py-16">
         <div className="container mx-auto px-4 max-w-6xl">
@@ -23,11 +25,63 @@ export default function AboutPage() {
           <p className="text-xl text-blue-100">
             Your Trusted Microsoft Digital Products Partner
           </p>
+          {/* ✅ Partner badge visible immediately */}
+          <div className="mt-6 inline-flex items-center bg-white text-blue-700 px-4 py-2 rounded-lg font-semibold text-sm">
+            ✅ Verified Microsoft Partner — ID: f2266aa5
+          </div>
         </div>
       </section>
 
       {/* Main Content */}
       <section className="container mx-auto px-4 max-w-6xl py-12">
+
+        {/* ✅ NEW: Microsoft Partner Verification — most important for Google */}
+        <div className="bg-white rounded-lg shadow-md p-8 mb-8 border-l-4 border-blue-600">
+          <h2 className="text-3xl font-bold text-gray-800 mb-6">
+            Microsoft Partner Verification
+          </h2>
+          <p className="text-lg text-gray-700 mb-6">
+            KEYVERSELY LLC is a verified Microsoft Partner. You can independently
+            verify our partnership status directly on Microsoft's official marketplace.
+          </p>
+          <div className="bg-blue-50 rounded-lg p-6 mb-6">
+            <div className="grid md:grid-cols-2 gap-4 text-gray-700">
+              <div className="space-y-2">
+                <p><strong>Partner Name:</strong> KEYVERSELY LLC</p>
+                <p><strong>Microsoft Partner ID:</strong> f2266aa5</p>
+                <p><strong>Partner Type:</strong> Independent Software Reseller</p>
+              </div>
+              <div className="space-y-2">
+                <p><strong>Status:</strong> ✅ Active & Verified</p>
+                <p><strong>Products:</strong> Microsoft Office & Windows Licenses</p>
+                <p><strong>Region:</strong> United States</p>
+              </div>
+            </div>
+          </div>
+          
+            href="https://marketplace.microsoft.com/en-us/partners/f2266aa5-5704-4384-ad55-100cf2c530cb/overview"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors"
+          >
+            🔗 View Our Official Microsoft Partner Profile →
+          </a>
+        </div>
+
+        {/* ✅ NEW: Important Reseller Disclaimer — clearly visible */}
+        <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-6 mb-8">
+          <h3 className="text-lg font-bold text-yellow-800 mb-2">
+            ⚠️ Important Notice
+          </h3>
+          <p className="text-yellow-800">
+            KEYVERSELY LLC is an <strong>independent authorized reseller</strong> of
+            genuine Microsoft software licenses. We are <strong>NOT affiliated with,
+            endorsed by, or sponsored by Microsoft Corporation.</strong> Microsoft,
+            Windows, and Office are registered trademarks of Microsoft Corporation.
+            All licenses sold are 100% genuine and sourced through authorized channels.
+          </p>
+        </div>
+
         {/* Who We Are */}
         <div className="bg-white rounded-lg shadow-md p-8 mb-8">
           <h2 className="text-3xl font-bold text-gray-800 mb-6">Who We Are</h2>
@@ -159,24 +213,13 @@ export default function AboutPage() {
                 Business Details
               </h3>
               <div className="space-y-3 text-gray-700">
-                <p>
-                  <strong>Legal Name:</strong> KEYVERSELY LLC
-                </p>
-                <p>
-                  <strong>Formation Date:</strong> November 24, 2025
-                </p>
-                <p>
-                  <strong>Entity Type:</strong> Limited Liability Company (LLC)
-                </p>
-                <p>
-                  <strong>Formation State:</strong> Wyoming, USA
-                </p>
-                <p>
-                  <strong>Status:</strong> Active/Good Standing
-                </p>
-                <p>
-                  <strong>EIN:</strong> 61-2315882
-                </p>
+                <p><strong>Legal Name:</strong> KEYVERSELY LLC</p>
+                <p><strong>Formation Date:</strong> November 24, 2025</p>
+                <p><strong>Entity Type:</strong> Limited Liability Company (LLC)</p>
+                <p><strong>Formation State:</strong> Wyoming, USA</p>
+                <p><strong>Status:</strong> Active/Good Standing</p>
+                <p><strong>EIN:</strong> 61-2315882</p>
+                <p><strong>Microsoft Partner ID:</strong> f2266aa5</p>
               </div>
             </div>
             <div>
@@ -185,18 +228,14 @@ export default function AboutPage() {
               </h3>
               <div className="space-y-3 text-gray-700">
                 <p>
-                  <strong>Address:</strong>
-                  <br />
-                  63 N Burritt Ave Rm 100 PMB 1180
-                  <br />
-                  Buffalo, Wyoming 82834
-                  <br />
+                  <strong>Address:</strong><br />
+                  63 N Burritt Ave Rm 100 PMB 1180<br />
+                  Buffalo, Wyoming 82834<br />
                   United States
                 </p>
                 <p>
-                  <strong>Email:</strong>
-                  <br />
-                  <a
+                  <strong>Email:</strong><br />
+                  
                     href="mailto:support@keyversely.com"
                     className="text-blue-600 hover:text-blue-800"
                   >
@@ -204,10 +243,8 @@ export default function AboutPage() {
                   </a>
                 </p>
                 <p>
-                  <strong>Business Hours:</strong>
-                  <br />
-                  Monday - Friday: 9:00 AM - 6:00 PM EST
-                  <br />
+                  <strong>Business Hours:</strong><br />
+                  Monday - Friday: 9:00 AM - 6:00 PM EST<br />
                   Saturday - Sunday: Closed
                 </p>
               </div>
@@ -222,8 +259,7 @@ export default function AboutPage() {
           </h2>
           <div className="text-gray-700">
             <p className="mb-2">
-              <strong>NAICS Code:</strong> 454110 - Electronic Shopping and
-              Mail-Order Houses
+              <strong>NAICS Code:</strong> 454110 - Electronic Shopping and Mail-Order Houses
             </p>
             <p>
               <strong>Industry:</strong> Retail Trade - Digital Products
@@ -243,38 +279,23 @@ export default function AboutPage() {
           <ul className="space-y-2 text-gray-700">
             <li className="flex items-start">
               <span className="text-blue-600 mr-2">•</span>
-              <span>
-                Maintain full transparency about our business registration and
-                contact information
-              </span>
+              <span>Maintain full transparency about our business registration and contact information</span>
             </li>
             <li className="flex items-start">
               <span className="text-blue-600 mr-2">•</span>
-              <span>
-                Provide clear and honest product descriptions with all
-                applicable terms
-              </span>
+              <span>Provide clear and honest product descriptions with all applicable terms</span>
             </li>
             <li className="flex items-start">
               <span className="text-blue-600 mr-2">•</span>
-              <span>
-                Offer responsive customer support to address any concerns or
-                questions
-              </span>
+              <span>Offer responsive customer support to address any concerns or questions</span>
             </li>
             <li className="flex items-start">
               <span className="text-blue-600 mr-2">•</span>
-              <span>
-                Follow all applicable laws and regulations for digital product
-                sales
-              </span>
+              <span>Follow all applicable laws and regulations for digital product sales</span>
             </li>
             <li className="flex items-start">
               <span className="text-blue-600 mr-2">•</span>
-              <span>
-                Protect your personal information with industry-standard
-                security measures
-              </span>
+              <span>Protect your personal information with industry-standard security measures</span>
             </li>
           </ul>
         </div>
@@ -289,13 +310,13 @@ export default function AboutPage() {
             solutions for your needs.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a
+            
               href="/contact"
               className="bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-blue-50 transition-colors"
             >
               Contact Us
             </a>
-            <a
+            
               href="/search"
               className="bg-blue-700 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-600 transition-colors border-2 border-white"
             >
@@ -318,6 +339,7 @@ export default function AboutPage() {
           </p>
         </div>
       </section>
+
       <Footer />
     </div>
   );
