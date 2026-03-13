@@ -4,9 +4,9 @@ import Header from "@/components/shared/header";
 import Footer from "@/components/footer";
 
 export const metadata: Metadata = {
-  title: "About Us - KEYVERSELY LLC | Authorized Microsoft Reseller",
+ title: "About Us - KEYVERSELY LLC | Independent Microsoft Software Reseller",
   description:
-    "Learn about KEYVERSELY LLC, your trusted source for genuine Microsoft digital products and software licenses. Authorized Microsoft Partner based in Wyoming, USA. Partner ID: f2266aa5",
+   description: "Learn about KEYVERSELY LLC, an independent Microsoft software reseller operating at ActualKeys.com. Genuine Microsoft licenses, verified Microsoft Partner ID: f2266aa5, based in Wyoming, USA.",
   keywords:
     "Microsoft reseller, software licenses, digital products, KEYVERSELY, Microsoft Partner",
 };
