@@ -19,6 +19,35 @@ export const metadata: Metadata = {
   },
   description: APP_DESCRIPTION,
   metadataBase: new URL(SERVER_URL),
+
+  // ✅ SEO ADDITION 1: OpenGraph
+  // Controls how your links look when shared on WhatsApp, Facebook, iMessage.
+  // Without this, shared links show no image or a broken preview.
+  openGraph: {
+    type: "website",
+    siteName: APP_NAME,
+    locale: "en_US",
+    images: [{ url: "/og-image.jpg", width: 1200, height: 630 }],
+  },
+
+  // ✅ SEO ADDITION 2: Twitter/X card
+  // Makes links shared on Twitter/X show a large image preview.
+  twitter: {
+    card: "summary_large_image",
+  },
+
+  // ✅ SEO ADDITION 3: Robots rules
+  // Explicitly tells Google it can index your site and show large product images.
+  // "max-image-preview: large" = Google can show full-size product images in results.
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+    },
+  },
 };
 
 export default function RootLayout({
@@ -31,6 +60,13 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
+
+        {/* ✅ SEO ADDITION 4: Font preconnect                               */}
+        {/* You use Inter from Google Fonts. These 2 lines tell the browser   */}
+        {/* to connect to Google's font servers ~200ms earlier than normal.   */}
+        {/* Faster font load = better LCP score = better Google rankings.     */}
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
 
         {/* ===================================================== */}
         {/* ✅ Google Tag Manager */}
