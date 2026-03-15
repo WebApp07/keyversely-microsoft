@@ -1,3 +1,5 @@
+// app/product/[slug]/page.tsx
+import { Metadata } from "next";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
 import { notFound } from "next/navigation";
@@ -14,6 +16,136 @@ import { auth } from "@/lib/auth";
 import Rating from "@/components/shared/product/rating";
 import RelatedProducts from "@/components/RelatedProducts";
 import ProductFeatures from "@/components/shared/product/product-features";
+
+const BASE_URL = "https://actualkeys.com";
+
+// ─────────────────────────────────────────────────────────────────────────────
+// ✅ SEO: generateMetadata — gives every product its own unique title,
+// description, and OpenGraph image in Google results and social shares.
+// Without this, all product pages share the same generic title → Google
+// treats them as duplicate content and won't rank them individually.
+// ─────────────────────────────────────────────────────────────────────────────
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
+  const { slug } = await params;
+  const product = await getProductBySlug(slug);
+
+  if (!product) {
+    return {
+      title: "Product Not Found",
+      description: "This product could not be found.",
+    };
+  }
+
+  // Use first 160 chars of description for meta description
+  const metaDescription = product.description
+    .replace(/\n/g, " ")
+    .slice(0, 160)
+    .trim();
+
+  return {
+    // Becomes: "Microsoft Office 2021 Professional Plus | ActualKeys"
+    title: product.name,
+
+    description: metaDescription,
+
+    openGraph: {
+      title: product.name,
+      description: metaDescription,
+      type: "website",
+      url: `${BASE_URL}/product/${product.slug}`,
+      images: [
+        {
+          url: product.images[0],
+          width: 1200,
+          height: 630,
+          alt: product.name,
+        },
+      ],
+    },
+
+    twitter: {
+      card: "summary_large_image",
+      title: product.name,
+      description: metaDescription,
+      images: [product.images[0]],
+    },
+
+    // Canonical URL — prevents duplicate content if product is accessible
+    // via multiple URLs (e.g. with/without trailing slash)
+    alternates: {
+      canonical: `${BASE_URL}/product/${product.slug}`,
+    },
+  };
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// ✅ SEO: Product JSON-LD schema — this is what gives you:
+//   • Price shown directly in Google results
+//   • "In Stock" / "Out of Stock" badge in Google
+//   • ★★★★☆ star ratings in Google results (from your Review model)
+//   • Eligibility for Google Shopping free listings
+// ─────────────────────────────────────────────────────────────────────────────
+function buildProductSchema(product: {
+  name: string;
+  description: string;
+  slug: string;
+  images: string[];
+  price: { toString: () => string };
+  brand: string;
+  stock: number;
+  rating: { toString: () => string };
+  numReviews: number;
+}) {
+  const isAvailable = product.stock > 0;
+
+  return {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    name: product.name,
+    description: product.description.replace(/\n/g, " ").slice(0, 500),
+    image: product.images,
+    brand: {
+      "@type": "Brand",
+      name: product.brand,
+    },
+    url: `${BASE_URL}/product/${product.slug}`,
+    offers: {
+      "@type": "Offer",
+      price: product.price.toString(),
+      priceCurrency: "USD",
+      availability: isAvailable
+        ? "https://schema.org/InStock"
+        : "https://schema.org/OutOfStock",
+      url: `${BASE_URL}/product/${product.slug}`,
+      seller: {
+        "@type": "Organization",
+        name: "ActualKeys",
+      },
+      // Digital product — instant delivery
+      deliveryLeadTime: {
+        "@type": "QuantitativeValue",
+        minValue: 0,
+        maxValue: 1,
+        unitCode: "DAY",
+      },
+    },
+    // Only include rating if there are actual reviews
+    // This powers the ★★★★☆ stars in Google results
+    ...(product.numReviews > 0 && {
+      aggregateRating: {
+        "@type": "AggregateRating",
+        ratingValue: product.rating.toString(),
+        reviewCount: product.numReviews,
+        bestRating: 5,
+        worstRating: 1,
+      },
+    }),
+  };
+}
 
 // --- Availability Badge Component (for digital products) ---
 const AvailabilityBadge = ({ available }: { available: boolean }) => {
@@ -91,11 +223,20 @@ const ProductDetailsPage = async (props: {
   const userId = session?.user?.id;
   const cart = await getMyCart();
 
-  // For digital products, stock > 0 means "available"
   const isAvailable = product.stock > 0;
+
+  // ✅ Build the JSON-LD schema for this product
+  const productSchema = buildProductSchema(product);
 
   return (
     <>
+      {/* ✅ SEO: JSON-LD injected in the page head — Google reads this for
+          rich results: price, stars, availability shown in search results */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(productSchema) }}
+      />
+
       <section>
         <div className="grid grid-cols-1 md:grid-cols-5 gap-6">
           {/* Product Images */}
@@ -128,8 +269,6 @@ const ProductDetailsPage = async (props: {
                   className="w-24 rounded-full bg-green-100 text-green-700 px-5 py-2
                     dark:bg-green-900 dark:text-green-300"
                 />
-
-                {/* Availability Indicator (not stock count) */}
                 <AvailabilityBadge available={isAvailable} />
               </div>
             </div>
