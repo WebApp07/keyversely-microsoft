@@ -144,7 +144,7 @@ export const config = {
         const sessionCartId = crypto.randomUUID();
 
         // Clone the req ers
-        const newRequestHeaders = new Headers(request.headers);
+        const newRequestHeaders = request.headers;
 
         // Create new response and add the new ers
         const response = NextResponse.next({
