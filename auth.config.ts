@@ -1,7 +1,7 @@
 import type { NextAuthConfig } from "next-auth";
 import { NextResponse } from "next/server";
 export const authConfig = {
-  providheaders: [], // Required by NextAuthConfig type
+  providers: [], // Required by NextAuthConfig type
   callbacks: {
     authorized({ request, auth }: any) {
       // Get pathname from the req URL object
