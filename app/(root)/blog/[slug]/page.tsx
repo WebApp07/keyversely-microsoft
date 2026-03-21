@@ -154,7 +154,7 @@ export default async function BlogPostPage({ params }: Props) {
         <div className="grid grid-cols-1 lg:grid-cols-[1fr_300px] gap-12 items-start">
           {/* Article */}
           <article>
-            <er className="mb-8">
+            <header className="mb-8">
               <div className="inline-flex items-center gap-1.5 text-primary text-xs font-bold uppercase mb-4">
                 {post.category.name}
               </div>
@@ -193,7 +193,7 @@ export default async function BlogPostPage({ params }: Props) {
                   {post.readTime} min read
                 </span>
               </div>
-            </er>
+            </header>
 
             {/* Content */}
             <div
