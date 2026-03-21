@@ -206,7 +206,7 @@ const ProductDetailsPage = async (props: {
         <div className="grid grid-cols-1 md:grid-cols-5 gap-6">
           {/* Product Images */}
           <div className="col-span-2">
-            <ProductImages images={product.images} alt={product.name} />
+            <ProductImages images={product.images} />
           </div>
 
           {/* Product Details */}
