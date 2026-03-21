@@ -2,19 +2,20 @@ import { NextRequest, NextResponse } from "next/server";
 import Stripe from "stripe";
 import { updateOrderToPaid } from "@/lib/actions/order.actions";
 
+const stripe = new Stripe(process.env.STRIPE_SECRET_KEY as string);
+
 export async function POST(req: NextRequest) {
-  // Build the webhook event
-  const event = await Stripe.webhooks.constructEvent(
-    await req.text(),
-    req.headers.get("stripe-signature") as string,
+  const body = await req.text();
+  const signature = req.headers.get("stripe-signature") as string;
+
+  const event = stripe.webhooks.constructEvent(
+    body,
+    signature,
     process.env.STRIPE_WEBHOOK_SECRET as string,
   );
 
-  // Check for successful payment
   if (event.type === "charge.succeeded") {
     const { object } = event.data;
-
-    // Update order status
     await updateOrderToPaid({
       orderId: object.metadata.orderId,
       paymentResult: {
@@ -24,7 +25,6 @@ export async function POST(req: NextRequest) {
         pricePaid: (object.amount / 100).toFixed(),
       },
     });
-
     return NextResponse.json({
       message: "updateOrderToPaid was successful",
     });
