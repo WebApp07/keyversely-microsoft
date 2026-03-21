@@ -10,10 +10,7 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 
 const inter = Inter({ subsets: ["latin"] });
 
-<<<<<<< 
-=======
 // ✅ Facebook Pixel ID from environment
->>>>>>> 1f810bd (Add blog features with auto blog)
 const FB_PIXEL_ID = process.env.NEXT_PUBLIC_FACEBOOK_PIXEL_ID;
 
 export const metadata: Metadata = {
@@ -23,7 +20,6 @@ export const metadata: Metadata = {
   },
   description: APP_DESCRIPTION,
   metadataBase: new URL(SERVER_URL),
-<<<<<<< 
 
   // ✅ SEO ADDITION 1: OpenGraph
   // Controls how your links look when shared on WhatsApp, Facebook, iMessage.
@@ -53,8 +49,6 @@ export const metadata: Metadata = {
       "max-image-preview": "large",
     },
   },
-=======
->>>>>>> 1f810bd (Add blog features with auto blog)
 };
 
 export default function RootLayout({
@@ -68,7 +62,6 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <>
 
-<<<<<<< 
         {/* ✅ SEO ADDITION 4: Font preconnect                               */}
         {/* You use Inter from Google Fonts. These 2 lines tell the browser   */}
         {/* to connect to Google's font servers ~200ms earlier than normal.   */}
@@ -76,8 +69,6 @@ export default function RootLayout({
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
 
-=======
->>>>>>> 1f810bd (Add blog features with auto blog)
         {/* ===================================================== */}
         {/* ✅ Google Tag Manager */}
         {isProduction && (
@@ -97,7 +88,6 @@ export default function RootLayout({
         )}
 
         {/* ===================================================== */}
-<<<<<<< 
         {/* ✅ Google Ads (gtag.js) */}
         {isProduction && (
           <>
@@ -123,9 +113,7 @@ export default function RootLayout({
 
         {/* ===================================================== */}
         {/* ✅ Facebook Pixel */}
-=======
         {/* ✅ Facebook Pixel (optional – you can also move this to GTM later) */}
->>>>>>> 1f810bd (Add blog features with auto blog)
         {isProduction && FB_PIXEL_ID && (
           <>
             <Script

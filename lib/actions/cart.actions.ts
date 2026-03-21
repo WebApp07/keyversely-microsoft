@@ -1,13 +1,13 @@
 "use server";
 
-import { cookies } from "next/ers";
-import { CartItem } from "@/types";
+import { cookies } from "next/headers"; // ✅ correctimport { CartItem } from "@/types";
 import { convertToPlainObject, formatError, round2 } from "../utils";
 import { auth } from "@/lib/auth";
 import { prisma } from "@/db/prisma";
 import { cartItemSchema, insertCartSchema } from "../validators";
 import { revalidatePath } from "next/cache";
 import { Prisma } from "@prisma/client";
+import { CartItem } from "@/types";
 
 // Calculate cart prices
 const calcPrice = (items: CartItem[]) => {

@@ -80,10 +80,7 @@ export default {
   		}
   	}
   },
-<<<<<<< 
   plugins: [require("tailwindcss-animate")],
-=======
   plugins: [require("tailwindcss-animate"), require("@tailwindcss/typography")],
 
->>>>>>> 1f810bd (Add blog features with auto blog)
 } satisfies Config;

@@ -28,7 +28,6 @@ model Product {
 }
 
 model User {
-<<<<<<< 
   id            String    @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
   name          String    @default("NO_NAME")
   email         String    @unique(map: "user_email_idx")
@@ -40,7 +39,6 @@ model User {
   paymentMethod String?
   createdAt     DateTime  @default(now()) @db.Timestamp(6)
   updatedAt     DateTime  @updatedAt
-=======
   id            String     @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
   name          String     @default("NO_NAME")
   email         String     @unique(map: "user_email_idx")
@@ -52,16 +50,12 @@ model User {
   paymentMethod String?
   createdAt     DateTime   @default(now()) @db.Timestamp(6)
   updatedAt     DateTime   @updatedAt
->>>>>>> 1f810bd (Add blog features with auto blog)
   account       Account[]
   Cart          Cart[]
   Order         Order[]
   Review        Review[]
   session       Session[]
-<<<<<<< 
-=======
   BlogPost      BlogPost[]
->>>>>>> 1f810bd (Add blog features with auto blog)
 }
 
 model Account {
@@ -159,8 +153,6 @@ model Review {
   product            Product  @relation(fields: [productId], references: [id], onDelete: Cascade)
   user               User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
-<<<<<<< 
-=======
 
 model BlogPost {
   id         String       @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
@@ -204,4 +196,3 @@ model BlogTag {
 
   @@map("blog_tags")
 }
->>>>>>> 1f810bd (Add blog features with auto blog)

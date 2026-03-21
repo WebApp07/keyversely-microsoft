@@ -1,5 +1,4 @@
 // app/sitemap.ts
-<<<<<<< 
 import { MetadataRoute } from "next";
 import { prisma } from "@/db/prisma"; // ← change to match your prisma import path
 
@@ -57,7 +56,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   // ── Merge everything ──────────────────────────────────────────────────────
   return [...staticPages, ...categoryPages, ...productPages];
-=======
 // Place this file in your /app directory
 
 import { MetadataRoute } from 'next'
@@ -133,5 +131,4 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.6,
     },
   ]
->>>>>>> 1f810bd (Add blog features with auto blog)
 }

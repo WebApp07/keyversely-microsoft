@@ -478,7 +478,6 @@ export async function deliverOrder(orderId: string) {
     return { success: false, message: formatError(error) };
   }
 }
-<<<<<<< 
 
 // Get latest Order
 export async function getLatestOrder() {
@@ -492,5 +491,3 @@ export async function getLatestOrder() {
 
   return convertToPlainObject(order);
 }
-=======
->>>>>>> 1f810bd (Add blog features with auto blog)

@@ -48,19 +48,15 @@ const ProductForm = ({
   });
 
   const onSubmit: SubmitHandler<z.infer<typeof insertProductSchema>> = async (
-<<<<<<< 
     values
   ) => {
     // On Create
-=======
     values,
   ) => {
->>>>>>> 1f810bd (Add blog features with auto blog)
     if (type === "Create") {
       const res = await createProduct(values);
 
       if (!res.success) {
-<<<<<<< 
         toast({
           variant: "destructive",
           description: res.message,
@@ -69,19 +65,14 @@ const ProductForm = ({
         toast({
           description: res.message,
         });
-=======
         toast({ variant: "destructive", description: res.message });
       } else {
         toast({ description: res.message });
->>>>>>> 1f810bd (Add blog features with auto blog)
         router.push("/admin/products");
       }
     }
 
-<<<<<<< 
     // On Update
-=======
->>>>>>> 1f810bd (Add blog features with auto blog)
     if (type === "Update") {
       if (!productId) {
         router.push("/admin/products");
@@ -91,7 +82,6 @@ const ProductForm = ({
       const res = await updateProduct({ ...values, id: productId });
 
       if (!res.success) {
-<<<<<<< 
         toast({
           variant: "destructive",
           description: res.message,
@@ -100,11 +90,9 @@ const ProductForm = ({
         toast({
           description: res.message,
         });
-=======
         toast({ variant: "destructive", description: res.message });
       } else {
         toast({ description: res.message });
->>>>>>> 1f810bd (Add blog features with auto blog)
         router.push("/admin/products");
       }
     }
@@ -121,10 +109,7 @@ const ProductForm = ({
         onSubmit={form.handleSubmit(onSubmit)}
         className="space-y-8"
       >
-<<<<<<< 
-=======
         {/* Name & Slug */}
->>>>>>> 1f810bd (Add blog features with auto blog)
         <div className="flex flex-col md:flex-row gap-5">
           {/* Name */}
           <FormField
@@ -160,32 +145,26 @@ const ProductForm = ({
               >;
             }) => (
               <FormItem className="w-full">
-<<<<<<< 
                 <FormLabel>Name</FormLabel>
-=======
                 <FormLabel>Slug</FormLabel>
->>>>>>> 1f810bd (Add blog features with auto blog)
                 <FormControl>
                   <div className="relative">
                     <Input placeholder="Enter slug" {...field} />
                     <Button
                       type="button"
                       className="bg-gray-500 hover:bg-gray-600 text-white px-4 py-1 mt-2"
-<<<<<<< 
                       onClick={() => {
                         form.setValue(
                           "slug",
                           slugify(form.getValues("name"), { lower: true })
                         );
                       }}
-=======
                       onClick={() =>
                         form.setValue(
                           "slug",
                           slugify(form.getValues("name"), { lower: true }),
                         )
                       }
->>>>>>> 1f810bd (Add blog features with auto blog)
                     >
                       Generate
                     </Button>
@@ -196,7 +175,6 @@ const ProductForm = ({
             )}
           />
         </div>
-<<<<<<< 
         <div className="flex flex-col md:flex-row gap-5">
           {/* Category */}
           <FormField
@@ -210,7 +188,6 @@ const ProductForm = ({
                 "category"
               >;
             }) => (
-=======
 
         {/* Category & Brand */}
         <div className="flex flex-col md:flex-row gap-5">
@@ -218,7 +195,6 @@ const ProductForm = ({
             control={form.control}
             name="category"
             render={({ field }) => (
->>>>>>> 1f810bd (Add blog features with auto blog)
               <FormItem className="w-full">
                 <FormLabel>Category</FormLabel>
                 <FormControl>
@@ -228,7 +204,6 @@ const ProductForm = ({
               </FormItem>
             )}
           />
-<<<<<<< 
           {/* Brand */}
           <FormField
             control={form.control}
@@ -241,12 +216,10 @@ const ProductForm = ({
                 "brand"
               >;
             }) => (
-=======
           <FormField
             control={form.control}
             name="brand"
             render={({ field }) => (
->>>>>>> 1f810bd (Add blog features with auto blog)
               <FormItem className="w-full">
                 <FormLabel>Brand</FormLabel>
                 <FormControl>
@@ -257,7 +230,6 @@ const ProductForm = ({
             )}
           />
         </div>
-<<<<<<< 
         <div className="flex flex-col md:flex-row gap-5">
           {/* Price */}
           <FormField
@@ -271,7 +243,6 @@ const ProductForm = ({
                 "price"
               >;
             }) => (
-=======
 
         {/* Price & Stock */}
         <div className="flex flex-col md:flex-row gap-5">
@@ -279,7 +250,6 @@ const ProductForm = ({
             control={form.control}
             name="price"
             render={({ field }) => (
->>>>>>> 1f810bd (Add blog features with auto blog)
               <FormItem className="w-full">
                 <FormLabel>Price</FormLabel>
                 <FormControl>
@@ -289,7 +259,6 @@ const ProductForm = ({
               </FormItem>
             )}
           />
-<<<<<<< 
           {/* Stock */}
           <FormField
             control={form.control}
@@ -302,12 +271,10 @@ const ProductForm = ({
                 "stock"
               >;
             }) => (
-=======
           <FormField
             control={form.control}
             name="stock"
             render={({ field }) => (
->>>>>>> 1f810bd (Add blog features with auto blog)
               <FormItem className="w-full">
                 <FormLabel>Stock</FormLabel>
                 <FormControl>
@@ -318,7 +285,6 @@ const ProductForm = ({
             )}
           />
         </div>
-<<<<<<< 
         <div className="upload-field flex flex-col md:flex-row gap-5">
           {/* Images */}
           <FormField
@@ -364,7 +330,6 @@ const ProductForm = ({
         </div>
         <div className="upload-field">
           {/* isFeatured */}
-=======
 
         {/* Images Upload */}
         <FormField
@@ -451,7 +416,6 @@ const ProductForm = ({
 
         {/* Featured / Banner */}
         <div className="upload-field">
->>>>>>> 1f810bd (Add blog features with auto blog)
           Featured Product
           <Card>
             <CardContent className="space-y-2 mt-2">
@@ -479,10 +443,7 @@ const ProductForm = ({
                   height={680}
                 />
               )}
-<<<<<<< 
 
-=======
->>>>>>> 1f810bd (Add blog features with auto blog)
               {isFeatured && !banner && (
                 <UploadButton
                   endpoint="imageUploader"
@@ -500,7 +461,6 @@ const ProductForm = ({
             </CardContent>
           </Card>
         </div>
-<<<<<<< 
         <div>
           {/* Description */}
           <FormField
@@ -528,7 +488,6 @@ const ProductForm = ({
             )}
           />
         </div>
-=======
 
         {/* Description */}
         <FormField
@@ -550,7 +509,6 @@ const ProductForm = ({
         />
 
         {/* Submit */}
->>>>>>> 1f810bd (Add blog features with auto blog)
         <div>
           <Button
             type="submit"

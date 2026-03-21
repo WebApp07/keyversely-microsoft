@@ -1,8 +1,5 @@
-<<<<<<< 
 // app/product/[slug]/page.tsx
 import { Metadata } from "next";
-=======
->>>>>>> 1f810bd (Add blog features with auto blog)
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
 import { notFound } from "next/navigation";
@@ -20,15 +17,8 @@ import Rating from "@/components/shared/product/rating";
 import RelatedProducts from "@/components/RelatedProducts";
 import ProductFeatures from "@/components/shared/product/product-features";
 
-<<<<<<< 
 const BASE_URL = "https://actualkeys.com";
 
-// ─────────────────────────────────────────────────────────────────────────────
-// ✅ SEO: generateMetadata — gives every product its own unique title,
-// description, and OpenGraph image in Google results and social shares.
-// Without this, all product pages share the same generic title → Google
-// treats them as duplicate content and won't rank them individually.
-// ─────────────────────────────────────────────────────────────────────────────
 export async function generateMetadata({
   params,
 }: {
@@ -44,18 +34,14 @@ export async function generateMetadata({
     };
   }
 
-  // Use first 160 chars of description for meta description
   const metaDescription = product.description
     .replace(/\n/g, " ")
     .slice(0, 160)
     .trim();
 
   return {
-    // Becomes: "Microsoft Office 2021 Professional Plus | ActualKeys"
     title: product.name,
-
     description: metaDescription,
-
     openGraph: {
       title: product.name,
       description: metaDescription,
@@ -70,29 +56,18 @@ export async function generateMetadata({
         },
       ],
     },
-
     twitter: {
       card: "summary_large_image",
       title: product.name,
       description: metaDescription,
       images: [product.images[0]],
     },
-
-    // Canonical URL — prevents duplicate content if product is accessible
-    // via multiple URLs (e.g. with/without trailing slash)
     alternates: {
       canonical: `${BASE_URL}/product/${product.slug}`,
     },
   };
 }
 
-// ─────────────────────────────────────────────────────────────────────────────
-// ✅ SEO: Product JSON-LD schema — this is what gives you:
-//   • Price shown directly in Google results
-//   • "In Stock" / "Out of Stock" badge in Google
-//   • ★★★★☆ star ratings in Google results (from your Review model)
-//   • Eligibility for Google Shopping free listings
-// ─────────────────────────────────────────────────────────────────────────────
 function buildProductSchema(product: {
   name: string;
   description: string;
@@ -129,7 +104,6 @@ function buildProductSchema(product: {
         "@type": "Organization",
         name: "ActualKeys",
       },
-      // Digital product — instant delivery
       deliveryLeadTime: {
         "@type": "QuantitativeValue",
         minValue: 0,
@@ -137,8 +111,6 @@ function buildProductSchema(product: {
         unitCode: "DAY",
       },
     },
-    // Only include rating if there are actual reviews
-    // This powers the ★★★★☆ stars in Google results
     ...(product.numReviews > 0 && {
       aggregateRating: {
         "@type": "AggregateRating",
@@ -151,7 +123,6 @@ function buildProductSchema(product: {
   };
 }
 
-// --- Availability Badge Component (for digital products) ---
 const AvailabilityBadge = ({ available }: { available: boolean }) => {
   if (!available) {
     return (
@@ -165,63 +136,30 @@ const AvailabilityBadge = ({ available }: { available: boolean }) => {
     <span className="inline-flex items-center rounded-full bg-green-100 px-3 py-1 text-xs font-medium text-green-700 dark:bg-green-900 dark:text-green-300">
       ✅ Available now
     </span>
-=======
-// --- Availability Badge ---
-const AvailabilityBadge = ({ available }: { available: boolean }) => {
-  return available ? (
-    <span className="inline-flex items-center rounded-full bg-green-100 px-3 py-1 text-xs font-medium text-green-700 dark:bg-green-900 dark:text-green-300">
-      ✅ Available now
-    </span>
-  ) : (
-    <span className="inline-flex items-center rounded-full bg-red-100 px-3 py-1 text-xs font-medium text-red-700 dark:bg-red-900 dark:text-red-300">
-      ❌ Temporarily unavailable
-    </span>
->>>>>>> 1f810bd (Add blog features with auto blog)
   );
 };
 
-// --- Delivery Notice ---
 const DeliveryNotice = ({ title }: { title: string }) => {
   const hasLifetime = /lifetime/i.test(title);
-<<<<<<< 
 
-=======
->>>>>>> 1f810bd (Add blog features with auto blog)
   return (
     <div
       role="status"
       aria-label={`Digital delivery within 5-30 minutes${
         hasLifetime ? ", plus lifetime activation" : ""
       }`}
-<<<<<<< 
-      className="inline-flex items-center space-x-4 rounded-full 
-        bg-gradient-to-r from-blue-100 to-blue-50 
-        px-5 py-2 shadow-sm transition-shadow hover:shadow-md focus:shadow-md
-        dark:from-blue-900 dark:to-blue-800"
-    >
-      <Badge
-        variant="outline"
-        className="rounded-full border-blue-300 bg-white px-3 py-1 text-blue-700 font-medium
-          dark:border-blue-700 dark:bg-blue-950 dark:text-blue-300"
-=======
       className="inline-flex items-center space-x-4 rounded-full bg-gradient-to-r from-blue-100 to-blue-50 px-5 py-2 shadow-sm transition-shadow hover:shadow-md focus:shadow-md dark:from-blue-900 dark:to-blue-800"
     >
       <Badge
         variant="outline"
         className="rounded-full border-blue-300 bg-white px-3 py-1 text-blue-700 font-medium dark:border-blue-700 dark:bg-blue-950 dark:text-blue-300"
->>>>>>> 1f810bd (Add blog features with auto blog)
       >
         🚀 Instant Digital Delivery
       </Badge>
       {hasLifetime && (
         <Badge
           variant="outline"
-<<<<<<< 
-          className="rounded-full border-yellow-400 bg-yellow-50 px-3 py-1 text-yellow-700 font-medium
-            dark:border-yellow-600 dark:bg-yellow-900 dark:text-yellow-400"
-=======
           className="rounded-full border-yellow-400 bg-yellow-50 px-3 py-1 text-yellow-700 font-medium dark:border-yellow-600 dark:bg-yellow-900 dark:text-yellow-400"
->>>>>>> 1f810bd (Add blog features with auto blog)
         >
           🔒 Lifetime Activation
         </Badge>
@@ -235,42 +173,10 @@ const DeliveryNotice = ({ title }: { title: string }) => {
   );
 };
 
-<<<<<<< 
 const ProductDetailsPage = async (props: {
   params: Promise<{ slug: string }>;
 }) => {
   const { slug } = await props.params;
-=======
-// --- Dynamic Metadata for SEO ---
-export async function generateMetadata({
-  params,
-}: {
-  params: { slug: string };
-}) {
-  const product = await getProductBySlug(params.slug);
-  if (!product) return { title: "Product Not Found" };
-
-  return {
-    title: `${product.name} – Instant Digital Download`,
-    description: product.description.substring(0, 160),
-    keywords: [
-      product.name,
-      product.category,
-      "activation key",
-      "digital download",
-      "Windows 11",
-    ],
-    openGraph: {
-      title: product.name,
-      description: product.description.substring(0, 160),
-      images: [{ url: product.images[0] }],
-    },
-  };
-}
-
-const ProductDetailsPage = async ({ params }: { params: { slug: string } }) => {
-  const { slug } = params;
->>>>>>> 1f810bd (Add blog features with auto blog)
   const product = await getProductBySlug(slug);
   if (!product) notFound();
 
@@ -285,45 +191,12 @@ const ProductDetailsPage = async ({ params }: { params: { slug: string } }) => {
   const session = await auth();
   const userId = session?.user?.id;
   const cart = await getMyCart();
-<<<<<<< 
 
   const isAvailable = product.stock > 0;
-
-  // ✅ Build the JSON-LD schema for this product
   const productSchema = buildProductSchema(product);
 
   return (
     <>
-      {/* ✅ SEO: JSON-LD injected in the page  — Google reads this for
-          rich results: price, stars, availability shown in search results */}
-=======
-  const isAvailable = product.stock > 0;
-
-  // --- Structured Data for Google ---
-  const productSchema = {
-    "@context": "https://schema.org/",
-    "@type": "Product",
-    name: product.name,
-    image: product.images[0],
-    description: product.description,
-    brand: {
-      "@type": "Brand",
-      name: product.brand || "Microsoft",
-    },
-    offers: {
-      "@type": "Offer",
-      priceCurrency: "USD",
-      price: product.price,
-      availability: isAvailable
-        ? "https://schema.org/InStock"
-        : "https://schema.org/OutOfStock",
-    },
-  };
-
-  return (
-    <>
-      {/* Structured Data Script */}
->>>>>>> 1f810bd (Add blog features with auto blog)
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(productSchema) }}
@@ -333,19 +206,11 @@ const ProductDetailsPage = async ({ params }: { params: { slug: string } }) => {
         <div className="grid grid-cols-1 md:grid-cols-5 gap-6">
           {/* Product Images */}
           <div className="col-span-2">
-<<<<<<< 
-            <ProductImages images={product.images} />
-=======
-            <ProductImages
-              images={product.images}
-              alt={product.name} // image SEO
-            />
->>>>>>> 1f810bd (Add blog features with auto blog)
+            <ProductImages images={product.images} alt={product.name} />
           </div>
 
           {/* Product Details */}
           <div className="col-span-2 p-5 sm:p-8">
-<<<<<<< 
             <div className="flex flex-col gap-6">
               <p className="text-sm text-gray-600 dark:text-gray-400">
                 {product.brand} {product.category}
@@ -355,7 +220,6 @@ const ProductDetailsPage = async ({ params }: { params: { slug: string } }) => {
               </h1>
 
               <DeliveryNotice title={product.name} />
-
               <ProductFeatures title={product.name} />
 
               <Rating value={Number(product.rating)} />
@@ -366,8 +230,7 @@ const ProductDetailsPage = async ({ params }: { params: { slug: string } }) => {
               <div className="flex flex-col sm:flex-row sm:items-center gap-3">
                 <ProductPrice
                   value={Number(product.price)}
-                  className="w-24 rounded-full bg-green-100 text-green-700 px-5 py-2
-                    dark:bg-green-900 dark:text-green-300"
+                  className="w-24 rounded-full bg-green-100 text-green-700 px-5 py-2 dark:bg-green-900 dark:text-green-300"
                 />
                 <AvailabilityBadge available={isAvailable} />
               </div>
@@ -382,50 +245,12 @@ const ProductDetailsPage = async ({ params }: { params: { slug: string } }) => {
                   <p key={idx}>{line}</p>
                 ))}
               </div>
-=======
-            <p className="text-sm text-gray-600 dark:text-gray-400">
-              {product.brand} {product.category}
-            </p>
-            <h1 className="h3-bold text-gray-900 dark:text-gray-100">
-              {product.name} – Instant Digital Download
-            </h1>
-
-            <DeliveryNotice title={product.name} />
-
-            <ProductFeatures title={product.name} />
-            <Rating value={Number(product.rating)} />
-            <p className="text-sm text-gray-600 dark:text-gray-400">
-              {product.numReviews} reviews
-            </p>
-
-            <div className="flex flex-col sm:flex-row sm:items-center gap-3">
-              <ProductPrice value={Number(product.price)} />
-              <AvailabilityBadge available={isAvailable} />
-            </div>
-
-            <div className="mt-6 text-sm text-gray-700 dark:text-gray-300 leading-relaxed space-y-2">
-              {product.description.split("\n").map((line, idx) => (
-                <p key={idx}>{line}</p>
-              ))}
-              {/* Extra keyword paragraph */}
-              <p>
-                Buy {product.name} with instant delivery. This digital product
-                is perfect for users looking for a secure, fast activation
-                solution with lifetime access.
-              </p>
->>>>>>> 1f810bd (Add blog features with auto blog)
             </div>
           </div>
 
           {/* Right Sidebar: Action Panel */}
           <div className="col-span-1 sticky top-24 self-start">
-<<<<<<< 
-            <Card
-              className="shadow-sm hover:shadow-md transition-shadow
-                bg-white dark:bg-gray-900
-                border border-gray-200 dark:border-gray-700
-                text-gray-700 dark:text-gray-300"
-            >
+            <Card className="shadow-sm hover:shadow-md transition-shadow bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 text-gray-700 dark:text-gray-300">
               <CardContent className="p-4 space-y-4 text-sm">
                 {/* Price */}
                 <div className="flex justify-between items-center text-base">
@@ -555,44 +380,6 @@ const ProductDetailsPage = async ({ params }: { params: { slug: string } }) => {
                       Contact us for availability
                     </a>
                   </div>
-=======
-            <Card className="shadow-sm hover:shadow-md transition-shadow bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 text-gray-700 dark:text-gray-300">
-              <CardContent className="p-4 space-y-4 text-sm">
-                <div className="flex justify-between items-center text-base">
-                  <span className="font-semibold">Price</span>
-                  <ProductPrice value={Number(product.price)} />
-                </div>
-
-                <div className="flex justify-between items-center">
-                  <span className="font-semibold">Status</span>
-                  <AvailabilityBadge available={isAvailable} />
-                </div>
-
-                <section>
-                  <h3 className="font-semibold text-base">Digital Delivery</h3>
-                  <p>📧 Delivered via email</p>
-                  <p className="text-sm mt-1">
-                    <strong>Typical delivery:</strong> 5-30 minutes
-                  </p>
-                </section>
-
-                {isAvailable ? (
-                  <AddToCart
-                    cart={cart}
-                    item={{
-                      productId: product.id,
-                      name: product.name,
-                      slug: product.slug,
-                      price: product.price,
-                      qty: 1,
-                      image: product.images![0],
-                    }}
-                  />
-                ) : (
-                  <p className="text-red-600 dark:text-red-400 mt-2">
-                    This product is temporarily unavailable.
-                  </p>
->>>>>>> 1f810bd (Add blog features with auto blog)
                 )}
               </CardContent>
             </Card>

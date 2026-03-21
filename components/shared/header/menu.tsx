@@ -18,12 +18,9 @@ const Menu = () => {
       <nav className="hidden md:flex w-full max-w-xs gap-1">
         <ModeToggle />
         <Button asChild variant="ghost">
-<<<<<<< 
-=======
           <Link href="/blog">Blog</Link>
         </Button>
         <Button asChild variant="ghost">
->>>>>>> 1f810bd (Add blog features with auto blog)
           <Link href="/cart">
             <ShoppingCart /> Cart
           </Link>
@@ -48,13 +45,10 @@ const Menu = () => {
               </Link>
             </Button>
 
-<<<<<<< 
-=======
             <Button asChild variant="ghost">
               <Link href="/blog">Blog</Link>
             </Button>
 
->>>>>>> 1f810bd (Add blog features with auto blog)
             <UserButton />
             <SheetDescription />
           </SheetContent>

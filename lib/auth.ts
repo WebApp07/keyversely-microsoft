@@ -3,8 +3,7 @@ import { PrismaAdapter } from "@auth/prisma-adapter";
 import { prisma } from "@/db/prisma";
 import CredentialsProvider from "next-auth/providers/credentials";
 import type { NextAuthConfig } from "next-auth";
-import { cookies } from "next/ers";
-import { NextResponse } from "next/server";
+import { cookies } from "next/headers"; // ✅ correctimport { NextResponse } from "next/server";
 import { compare } from "./encrypt";
 export const config = {
   pages: {

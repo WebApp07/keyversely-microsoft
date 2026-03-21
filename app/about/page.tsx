@@ -1,35 +1,26 @@
-<<<<<<< 
 // app/about/page.tsx
-=======
->>>>>>> 1f810bd (Add blog features with auto blog)
 import type { Metadata } from "next";
 import er from "@/components/shared/er";
 import Footer from "@/components/footer";
 
 export const metadata: Metadata = {
-<<<<<<< 
   title: "About Us - KEYVERSELY LLC | Independent Microsoft Software Reseller",
   description:
     "Learn about KEYVERSELY LLC, an independent Microsoft software reseller operating at ActualKeys.com. Genuine Microsoft licenses, verified Microsoft Partner ID: f2266aa5, based in Wyoming, USA.",
   keywords:
     "Microsoft reseller, software licenses, digital products, KEYVERSELY, Microsoft Partner",
-=======
   title: "About Us - KEYVERSELY LLC | Authorized Microsoft Reseller",
   description:
     "Learn about KEYVERSELY LLC, your trusted source for genuine Microsoft digital products and software licenses. Authorized reseller based in Wyoming, USA.",
   keywords:
     "Microsoft reseller, software licenses, digital products, KEYVERSELY",
->>>>>>> 1f810bd (Add blog features with auto blog)
 };
 
 export default function AboutPage() {
   return (
     <div className="min-h-screen bg-gray-50">
       <er />
-<<<<<<< 
 
-=======
->>>>>>> 1f810bd (Add blog features with auto blog)
       {/* Hero Section */}
       <section className="bg-gradient-to-r from-blue-600 to-blue-800 text-white py-16">
         <div className="container mx-auto px-4 max-w-6xl">
@@ -39,18 +30,14 @@ export default function AboutPage() {
           <p className="text-xl text-blue-100">
             Your Trusted Microsoft Digital Products Partner
           </p>
-<<<<<<< 
           <div className="mt-6 inline-flex items-center bg-white text-blue-700 px-4 py-2 rounded-lg font-semibold text-sm">
             ✅ Verified Microsoft Partner — ID: f2266aa5
           </div>
-=======
->>>>>>> 1f810bd (Add blog features with auto blog)
         </div>
       </section>
 
       {/* Main Content */}
       <section className="container mx-auto px-4 max-w-6xl py-12">
-<<<<<<< 
 
         {/* Microsoft Partner Verification */}
         <div className="bg-white rounded-lg shadow-md p-8 mb-8 border-l-4 border-blue-600">
@@ -100,8 +87,6 @@ export default function AboutPage() {
           </p>
         </div>
 
-=======
->>>>>>> 1f810bd (Add blog features with auto blog)
         {/* Who We Are */}
         <div className="bg-white rounded-lg shadow-md p-8 mb-8">
           <h2 className="text-3xl font-bold text-gray-800 mb-6">Who We Are</h2>
@@ -114,11 +99,8 @@ export default function AboutPage() {
           </p>
           <p className="text-lg text-gray-700 mb-4">
             As an authorized Microsoft reseller, we ensure that every product we
-<<<<<<< 
             deliver is 100% genuine and compliant with Microsoft&apos;s licensing
-=======
             deliver is 100% genuine and compliant with Microsoft's licensing
->>>>>>> 1f810bd (Add blog features with auto blog)
             terms. Our mission is to make quality software accessible to
             businesses and individuals while maintaining the highest standards
             of authenticity and customer service.
@@ -237,7 +219,6 @@ export default function AboutPage() {
                 Business Details
               </h3>
               <div className="space-y-3 text-gray-700">
-<<<<<<< 
                 <p><strong>Legal Name:</strong> KEYVERSELY LLC</p>
                 <p><strong>Formation Date:</strong> November 24, 2025</p>
                 <p><strong>Entity Type:</strong> Limited Liability Company (LLC)</p>
@@ -245,7 +226,6 @@ export default function AboutPage() {
                 <p><strong>Status:</strong> Active/Good Standing</p>
                 <p><strong>EIN:</strong> 61-2315882</p>
                 <p><strong>Microsoft Partner ID:</strong> f2266aa5</p>
-=======
                 <p>
                   <strong>Legal Name:</strong> KEYVERSELY LLC
                 </p>
@@ -264,7 +244,6 @@ export default function AboutPage() {
                 <p>
                   <strong>EIN:</strong> 61-2315882
                 </p>
->>>>>>> 1f810bd (Add blog features with auto blog)
               </div>
             </div>
             <div>
@@ -273,7 +252,6 @@ export default function AboutPage() {
               </h3>
               <div className="space-y-3 text-gray-700">
                 <p>
-<<<<<<< 
                   <strong>Address:</strong><br />
                   63 N Burritt Ave Rm 100 PMB 1180<br />
                   Buffalo, Wyoming 82834<br />
@@ -282,7 +260,6 @@ export default function AboutPage() {
                 <p>
                   <strong>Email:</strong><br />
                   {/* ✅ FIX 2: was missing opening <a tag */}
-=======
                   <strong>Address:</strong>
                   <br />
                   63 N Burritt Ave Rm 100 PMB 1180
@@ -294,7 +271,6 @@ export default function AboutPage() {
                 <p>
                   <strong>Email:</strong>
                   <br />
->>>>>>> 1f810bd (Add blog features with auto blog)
                   <a
                     href="mailto:support@keyversely.com"
                     className="text-blue-600 hover:text-blue-800"
@@ -303,15 +279,12 @@ export default function AboutPage() {
                   </a>
                 </p>
                 <p>
-<<<<<<< 
                   <strong>Business Hours:</strong><br />
                   Monday - Friday: 9:00 AM - 6:00 PM EST<br />
-=======
                   <strong>Business Hours:</strong>
                   <br />
                   Monday - Friday: 9:00 AM - 6:00 PM EST
                   <br />
->>>>>>> 1f810bd (Add blog features with auto blog)
                   Saturday - Sunday: Closed
                 </p>
               </div>
@@ -326,12 +299,9 @@ export default function AboutPage() {
           </h2>
           <div className="text-gray-700">
             <p className="mb-2">
-<<<<<<< 
               <strong>NAICS Code:</strong> 454110 - Electronic Shopping and Mail-Order Houses
-=======
               <strong>NAICS Code:</strong> 454110 - Electronic Shopping and
               Mail-Order Houses
->>>>>>> 1f810bd (Add blog features with auto blog)
             </p>
             <p>
               <strong>Industry:</strong> Retail Trade - Digital Products
@@ -342,24 +312,20 @@ export default function AboutPage() {
         {/* Trust & Security */}
         <div className="bg-blue-50 rounded-lg p-8 mb-8">
           <h2 className="text-3xl font-bold text-gray-800 mb-6">
-<<<<<<< 
             Trust &amp; Security
           </h2>
           <p className="text-lg text-gray-700 mb-4">
             At KEYVERSELY LLC, we understand the importance of trust when
             purchasing digital products online. That&apos;s why we:
-=======
             Trust & Security
           </h2>
           <p className="text-lg text-gray-700 mb-4">
             At KEYVERSELY LLC, we understand the importance of trust when
             purchasing digital products online. That's why we:
->>>>>>> 1f810bd (Add blog features with auto blog)
           </p>
           <ul className="space-y-2 text-gray-700">
             <li className="flex items-start">
               <span className="text-blue-600 mr-2">•</span>
-<<<<<<< 
               <span>Maintain full transparency about our business registration and contact information</span>
             </li>
             <li className="flex items-start">
@@ -377,7 +343,6 @@ export default function AboutPage() {
             <li className="flex items-start">
               <span className="text-blue-600 mr-2">•</span>
               <span>Protect your personal information with industry-standard security measures</span>
-=======
               <span>
                 Maintain full transparency about our business registration and
                 contact information
@@ -410,7 +375,6 @@ export default function AboutPage() {
                 Protect your personal information with industry-standard
                 security measures
               </span>
->>>>>>> 1f810bd (Add blog features with auto blog)
             </li>
           </ul>
         </div>
@@ -425,10 +389,7 @@ export default function AboutPage() {
             solutions for your needs.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-<<<<<<< 
             {/* ✅ FIX 3: was missing opening <a tag */}
-=======
->>>>>>> 1f810bd (Add blog features with auto blog)
             <a
               href="/contact"
               className="bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-blue-50 transition-colors"
@@ -458,10 +419,7 @@ export default function AboutPage() {
           </p>
         </div>
       </section>
-<<<<<<< 
 
-=======
->>>>>>> 1f810bd (Add blog features with auto blog)
       <Footer />
     </div>
   );
