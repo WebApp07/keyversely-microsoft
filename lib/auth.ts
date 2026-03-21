@@ -24,11 +24,9 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
       },
       async authorize(credentials) {
         if (credentials == null) return null;
-
         const user = await prisma.user.findFirst({
           where: { email: credentials.email as string },
         });
-
         if (user && user.password) {
           const isMatch = await compare(
             credentials.password as string,
@@ -61,7 +59,6 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
       if (user) {
         token.id = user.id;
         token.role = user.role;
-
         if (user.name === "NO_NAME") {
           token.name = user.email!.split("@")[0];
           await prisma.user.update({
@@ -69,16 +66,13 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
             data: { name: token.name },
           });
         }
-
         if (trigger === "signIn" || trigger === "signUp") {
           const cookiesObject = await cookies();
           const sessionCartId = cookiesObject.get("sessionCartId")?.value;
-
           if (sessionCartId) {
             const sessionCart = await prisma.cart.findFirst({
               where: { sessionCartId },
             });
-
             if (sessionCart) {
               await prisma.cart.deleteMany({ where: { userId: user.id } });
               await prisma.cart.update({
@@ -89,11 +83,9 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
           }
         }
       }
-
       if (session?.user.name && trigger === "update") {
         token.name = session.user.name;
       }
-
       return token;
     },
     authorized({ request, auth }: any) {
@@ -106,11 +98,8 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
         /\/order\/(.*)/,
         /\/admin/,
       ];
-
       const { pathname } = request.nextUrl;
-
       if (!auth && protectedPaths.some((p) => p.test(pathname))) return false;
-
       if (!request.cookies.get("sessionCartId")) {
         const sessionCartId = crypto.randomUUID();
         const response = NextResponse.next({
@@ -119,8 +108,7 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
         response.cookies.set("sessionCartId", sessionCartId);
         return response;
       }
-
       return true;
     },
   },
-});
+} as any);
