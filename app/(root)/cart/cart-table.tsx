@@ -8,7 +8,6 @@ import { Cart } from "@/types";
 import Link from "next/link";
 import Image from "next/image";
 import {
-  Table,
   TableBody,
   Table,
   Tableer,
