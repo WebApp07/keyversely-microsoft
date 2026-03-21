@@ -74,7 +74,7 @@ export default async function BlogPostPage({ params }: Props) {
   const relatedPosts = await getRelatedPosts(post.id, post.categoryId);
 
   // --- Products from DB based on category ---
-  let products = [];
+  let products: unknown[] = [];
   try {
     products = await prisma.product.findMany({
       where: { category: post.category.name },
