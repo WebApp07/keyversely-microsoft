@@ -3,7 +3,6 @@ import CheckoutSteps from "@/components/shared/checkout-steps";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import {
-  Table,
   TableBody,
   TableCell,
   Table,
