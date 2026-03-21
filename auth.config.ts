@@ -40,7 +40,7 @@ export const authConfig = {
         if (!request.cookies.get("sessionCartId")) {
           const sessionCartId = crypto.randomUUID();
           const response = NextResponse.next({
-            request: { headers: new Headers(request.headers) },
+            request: { headers: request.headers },
           });
           response.cookies.set("sessionCartId", sessionCartId);
           return response;
@@ -56,7 +56,7 @@ export const authConfig = {
         // Create new response and add the new headers
         const response = NextResponse.next({
           request: {
-            headers: new Headers(request.headers),
+            headers: request.headers,
           },
         });
         // Set newly generated sessionCartId in the response cookies
