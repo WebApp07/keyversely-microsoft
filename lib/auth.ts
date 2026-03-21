@@ -5,6 +5,7 @@ import CredentialsProvider from "next-auth/providers/credentials";
 import type { NextAuthConfig } from "next-auth";
 import { cookies } from "next/headers"; // ✅ correctimport { NextResponse } from "next/server";
 import { compare } from "./encrypt";
+import { NextResponse } from "next/server";
 export const config = {
   pages: {
     signIn: "/sign-in",

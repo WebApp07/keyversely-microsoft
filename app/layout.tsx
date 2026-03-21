@@ -61,13 +61,16 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <>
-
         {/* ✅ SEO ADDITION 4: Font preconnect                               */}
         {/* You use Inter from Google Fonts. These 2 lines tell the browser   */}
         {/* to connect to Google's font servers ~200ms earlier than normal.   */}
         {/* Faster font load = better LCP score = better Google rankings.     */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link
+          rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossOrigin="anonymous"
+        />
 
         {/* ===================================================== */}
         {/* ✅ Google Tag Manager */}
@@ -113,6 +116,7 @@ export default function RootLayout({
 
         {/* ===================================================== */}
         {/* ✅ Facebook Pixel */}
+
         {/* ✅ Facebook Pixel (optional – you can also move this to GTM later) */}
         {isProduction && FB_PIXEL_ID && (
           <>
@@ -156,11 +160,9 @@ export default function RootLayout({
             strategy="afterInteractive"
           />
         )}
-
       </>
 
       <body className={`${inter.className} antialiased`}>
-
         {/* ✅ Google Tag Manager (noscript) */}
         {isProduction && (
           <noscript>
