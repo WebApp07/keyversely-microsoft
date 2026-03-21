@@ -1,5 +1,4 @@
 import Footer from "@/components/footer";
-import er from "@/components/shared/er";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -11,7 +10,6 @@ export const metadata: Metadata = {
 export default function PaymentMethodsPage() {
   return (
     <div className="min-h-screen bg-gray-50">
-      <er />
       {/* Hero Section */}
       <section className="bg-gradient-to-r from-blue-600 to-blue-800 text-white py-16">
         <div className="container mx-auto px-4 max-w-4xl">
