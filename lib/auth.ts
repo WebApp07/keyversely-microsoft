@@ -16,7 +16,7 @@ export const config = {
     maxAge: 30 * 24 * 60 * 60, // 30 days
   },
   adapter: PrismaAdapter(prisma),
-  providheaders: [
+  providers: [
     CredentialsProvider({
       credentials: {
         email: { type: "email" },
