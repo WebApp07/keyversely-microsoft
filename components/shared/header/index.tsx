@@ -6,7 +6,7 @@ import Menu from "./menu";
 import CategoryDrawer from "./category-drawer";
 import Search from "./search";
 
-const er = () => {
+const Header = () => {
   return (
     <div className="wrapper flex flex-col md:flex-row md:items-center md:justify-between gap-3 py-3">
       <div className="flex items-center justify-between w-full md:w-auto">
@@ -44,4 +44,4 @@ const er = () => {
   );
 };
 
-export default er;
+export default Header;
