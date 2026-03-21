@@ -1,5 +1,5 @@
 const sampleData = {
-  usheaders: [
+  users: [
     {
       name: "John",
       email: "admin@example.com",
