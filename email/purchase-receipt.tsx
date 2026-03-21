@@ -2,8 +2,8 @@ import {
   Body,
   Column,
   Container,
-  ,
-  ing,
+  Hr,
+  Heading,
   Html,
   Img,
   Preview,
@@ -71,10 +71,10 @@ export default function PurchaseReceiptEmail({ order }: OrderInformationProps) {
     <Html>
       <Preview>View order receipt</Preview>
       <Tailwind>
-        < />
+        <Hr />
         <Body className="font-sans bg-white">
           <Container className="max-w-xl">
-            <ing>Purchase Receipt</ing>
+            <Heading>Purchase Receipt</Heading>
             <Section>
               <Row>
                 <Column>
