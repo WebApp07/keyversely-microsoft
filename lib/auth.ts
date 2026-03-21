@@ -144,12 +144,12 @@ export const config = {
         const sessionCartId = crypto.randomUUID();
 
         // Clone the req ers
-        const newRequesters = new ers(request.ers);
+        const newRequestHeaders = new Headers(request.headers);
 
         // Create new response and add the new ers
         const response = NextResponse.next({
           request: {
-            headers: newRequesters,
+            headers: newRequestHeaders,
           },
         });
 
