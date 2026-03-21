@@ -6,7 +6,7 @@ import {
   TableBody,
   TableCell,
   Table,
-  Tableer,
+  TableHeader,
   TableRow,
 } from "@/components/ui/table";
 import { Button } from "@/components/ui/button";
@@ -185,13 +185,13 @@ const OrderDetailsTable = ({
             <CardContent className="p-4 gap-4">
               <h2 className="text-xl pb-4">Order Items</h2>
               <Table>
-                <Tableer>
+                <TableHeader>
                   <TableRow>
                     <Table>Item</Table>
                     <Table>Quantity</Table>
                     <Table>Price</Table>
                   </TableRow>
-                </Tableer>
+                </TableHeader>
                 <TableBody>
                   {orderitems.map((item) => (
                     <TableRow key={item.slug}>

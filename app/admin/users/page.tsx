@@ -4,7 +4,7 @@ import {
   Table,
   TableBody,
   TableCell,
-  Tableer,
+  TableHeader,
   TableRow,
 } from "@/components/ui/table";
 import { formatId } from "@/lib/utils";
@@ -46,7 +46,7 @@ const AdminUserPage = async (props: {
       </div>
       <div className="overflow-x-auto">
         <Table>
-          <Tableer>
+          <TableHeader>
             <TableRow>
               <Table>ID</Table>
               <Table>NAME</Table>
@@ -54,7 +54,7 @@ const AdminUserPage = async (props: {
               <Table>ROLE</Table>
               <Table>ACTIONS</Table>
             </TableRow>
-          </Tableer>
+          </TableHeader>
           <TableBody>
             {users.data.map((user) => (
               <TableRow key={user.id}>

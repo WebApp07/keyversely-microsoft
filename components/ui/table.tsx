@@ -16,13 +16,13 @@ const Table = React.forwardRef<
 ));
 Table.displayName = "Table";
 
-const Tableer = React.forwardRef<
+const TableHeader = React.forwardRef<
   HTMLTableSectionElement,
   React.HTMLAttributes<HTMLTableSectionElement>
 >(({ className, ...props }, ref) => (
   <t ref={ref} className={cn("[&_tr]:border-b", className)} {...props} />
 ));
-Tableer.displayName = "Tableer";
+TableHeader.displayName = "TableHeader";
 
 const TableBody = React.forwardRef<
   HTMLTableSectionElement,
@@ -107,7 +107,7 @@ TableCaption.displayName = "TableCaption";
 
 export {
   Table,
-  Tableer,
+  TableHeader,
   TableBody,
   TableFooter,
   Table,

@@ -6,7 +6,7 @@ import {
   TableBody,
   TableCell,
   Table,
-  Tableer,
+  TableHeader,
   TableRow,
 } from "@/components/ui/table";
 import Pagination from "@/components/shared/pagination";
@@ -29,7 +29,7 @@ const OrdersPage = async (props: {
       <h2 className="h2-bold">Orders</h2>
       <div className="overflow-x-auto">
         <Table>
-          <Tableer>
+          <TableHeader>
             <TableRow>
               <Table>ID</Table>
               <Table>DATE</Table>
@@ -38,7 +38,7 @@ const OrdersPage = async (props: {
               <Table>DELIVERED</Table>
               <Table>ACTIONS</Table>
             </TableRow>
-          </Tableer>
+          </TableHeader>
           <TableBody>
             {orders.data.map((order) => (
               <TableRow key={order.id}>

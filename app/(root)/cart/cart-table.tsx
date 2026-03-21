@@ -10,7 +10,7 @@ import Image from "next/image";
 import {
   TableBody,
   Table,
-  Tableer,
+  TableHeader,
   TableRow,
   TableCell,
 } from "@/components/ui/table";
@@ -34,13 +34,13 @@ const CartTable = ({ cart }: { cart?: Cart }) => {
         <div className="grid md:grid-cols-4 md:gap-5">
           <div className="overflow-x-auto md:col-span-3">
             <Table>
-              <Tableer>
+              <TableHeader>
                 <TableRow>
                   <Table>Item</Table>
                   <Table className="text-center">Quantity</Table>
                   <Table className="text-right">Price</Table>
                 </TableRow>
-              </Tableer>
+              </TableHeader>
               <TableBody>
                 {cart.items.map((item) => (
                   <TableRow key={item.slug}>

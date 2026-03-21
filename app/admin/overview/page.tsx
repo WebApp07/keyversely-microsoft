@@ -2,7 +2,7 @@ import {
   Table,
   TableBody,
   TableCell,
-  Tableer,
+  TableHeader,
   TableRow,
 } from "@/components/ui/table";
 import { Card, CardContent, Carder, CardTitle } from "@/components/ui/card";
@@ -93,14 +93,14 @@ const AdminOverviewPage = async () => {
           </Carder>
           <CardContent>
             <Table>
-              <Tableer>
+              <TableHeader>
                 <TableRow>
                   <Table>BUYER</Table>
                   <Table>DATE</Table>
                   <Table>TOTAL</Table>
                   <Table>ACTIONS</Table>
                 </TableRow>
-              </Tableer>
+              </TableHeader>
               <TableBody>
                 {summary.latestSales.map((order) => (
                   <TableRow key={order.id}>

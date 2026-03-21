@@ -3,7 +3,7 @@ import {
   TableBody,
   TableCell,
   Table,
-  Tableer,
+  TableHeader,
   TableRow,
 } from "@/components/ui/table";
 import { deleteOrder, getAllOrders } from "@/lib/actions/order.actions";
@@ -45,7 +45,7 @@ const AdminOrdersPage = async (props: {
       </div>
       <div className="overflow-x-auto">
         <Table>
-          <Tableer>
+          <TableHeader>
             <TableRow>
               <Table>ID</Table>
               <Table>DATE</Table>
@@ -55,7 +55,7 @@ const AdminOrdersPage = async (props: {
               <Table>DELIVERED</Table>
               <Table>ACTIONS</Table>
             </TableRow>
-          </Tableer>
+          </TableHeader>
           <TableBody>
             {orders.data.map((order) => (
               <TableRow key={order.id}>

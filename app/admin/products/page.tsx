@@ -5,7 +5,7 @@ import {
   TableBody,
   TableCell,
   Table,
-  Tableer,
+  TableHeader,
   TableRow,
 } from "@/components/ui/table";
 import { deleteProduct, getAllProducts } from "@/lib/actions/product.actions";
@@ -51,7 +51,7 @@ const AdminProductsPage = async (props: {
         </Button>
       </div>
       <Table>
-        <Tableer>
+        <TableHeader>
           <TableRow>
             <Table>ID</Table>
             <Table>NAME</Table>
@@ -61,7 +61,7 @@ const AdminProductsPage = async (props: {
             <Table>RATING</Table>
             <Table className="w-[100px]">ACTIONS</Table>
           </TableRow>
-        </Tableer>
+        </TableHeader>
         <TableBody>
           {products.data.map((product) => (
             <TableRow key={product.id}>
