@@ -16,7 +16,7 @@ export const config = {
     maxAge: 30 * 24 * 60 * 60, // 30 days
   },
   adapter: PrismaAdapter(prisma),
-  providers: [
+  providheaders: [
     CredentialsProvider({
       credentials: {
         email: { type: "email" },
@@ -149,7 +149,7 @@ export const config = {
         // Create new response and add the new ers
         const response = NextResponse.next({
           request: {
-            ers: newRequesters,
+            headers: newRequesters,
           },
         });
 

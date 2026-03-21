@@ -6,7 +6,7 @@ export const paypal = {
     const url = `${base}/v2/checkout/orders`;
     const response = await fetch(url, {
       method: "POST",
-      ers: {
+      headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${accessToken}`,
       },
@@ -30,7 +30,7 @@ export const paypal = {
     const url = `${base}/v2/checkout/orders/${orderId}/capture`;
     const response = await fetch(url, {
       method: "POST",
-      ers: {
+      headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${accessToken}`,
       },
@@ -47,7 +47,7 @@ async function generateAccessToken() {
   const response = await fetch(`${base}/v1/oauth2/token`, {
     method: "POST",
     body: "grant_type=client_credentials",
-    ers: {
+    headers: {
       Authorization: `Basic ${auth}`,
       "Content-Type": "application/x-www-form-urlencoded",
     },

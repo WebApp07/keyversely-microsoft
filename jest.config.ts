@@ -36,7 +36,7 @@ const config: Config = {
   coverageProvider: "v8",
 
   // A list of reporter names that Jest uses when writing coverage reports
-  // coverageReporters: [
+  // coverageReportheaders: [
   //   "json",
   //   "text",
   //   "lcov",
@@ -53,7 +53,7 @@ const config: Config = {
   // errorOnDeprecated: false,
 
   // The default configuration for fake timers
-  // fakeTimers: {
+  // fakeTimheaders: {
   //   "enableGlobally": false
   // },
 
@@ -69,8 +69,8 @@ const config: Config = {
   // A set of global variables that need to be available in all test environments
   // globals: {},
 
-  // The maximum amount of workers used to run your tests. Can be specified as % or a number. E.g. maxWorkers: 10% will use 10% of your CPU amount + 1 as the maximum worker number. maxWorkers: 2 will use a maximum of 2 workers.
-  // maxWorkers: "50%",
+  // The maximum amount of workers used to run your tests. Can be specified as % or a number. E.g. maxWorkheaders: 10% will use 10% of your CPU amount + 1 as the maximum worker number. maxWorkheaders: 2 will use a maximum of 2 workers.
+  // maxWorkheaders: "50%",
 
   // An array of directory names to be searched recursively up from the requiring module's location
   // moduleDirectories: [
@@ -108,7 +108,7 @@ const config: Config = {
   // projects: undefined,
 
   // Use this configuration option to add custom reporters to Jest
-  // reporters: undefined,
+  // reportheaders: undefined,
 
   // Automatically reset mock state before every test
   // resetMocks: false,
@@ -143,7 +143,7 @@ const config: Config = {
   // slowTestThreshold: 5,
 
   // A list of paths to snapshot serializer modules Jest should use for snapshot testing
-  // snapshotSerializers: [],
+  // snapshotSerializheaders: [],
 
   // The test environment that will be used for testing
   // testEnvironment: "jest-environment-node",

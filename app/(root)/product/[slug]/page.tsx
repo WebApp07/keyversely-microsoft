@@ -92,7 +92,7 @@ function buildProductSchema(product: {
       name: product.brand,
     },
     url: `${BASE_URL}/product/${product.slug}`,
-    offers: {
+    offheaders: {
       "@type": "Offer",
       price: product.price.toString(),
       priceCurrency: "USD",
