@@ -4,7 +4,6 @@ import {
   Table,
   TableBody,
   TableCell,
-  Table,
   Tableer,
   TableRow,
 } from "@/components/ui/table";
