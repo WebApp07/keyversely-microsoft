@@ -48,11 +48,9 @@ const ProductForm = ({
   });
 
   const onSubmit: SubmitHandler<z.infer<typeof insertProductSchema>> = async (
-    values
-  ) => {
-    // On Create
     values,
   ) => {
+    // On Create
     if (type === "Create") {
       const res = await createProduct(values);
 
@@ -65,9 +63,6 @@ const ProductForm = ({
         toast({
           description: res.message,
         });
-        toast({ variant: "destructive", description: res.message });
-      } else {
-        toast({ description: res.message });
         router.push("/admin/products");
       }
     }
@@ -90,9 +85,6 @@ const ProductForm = ({
         toast({
           description: res.message,
         });
-        toast({ variant: "destructive", description: res.message });
-      } else {
-        toast({ description: res.message });
         router.push("/admin/products");
       }
     }
@@ -109,7 +101,6 @@ const ProductForm = ({
         onSubmit={form.handleSubmit(onSubmit)}
         className="space-y-8"
       >
-        {/* Name & Slug */}
         <div className="flex flex-col md:flex-row gap-5">
           {/* Name */}
           <FormField
@@ -146,7 +137,6 @@ const ProductForm = ({
             }) => (
               <FormItem className="w-full">
                 <FormLabel>Name</FormLabel>
-                <FormLabel>Slug</FormLabel>
                 <FormControl>
                   <div className="relative">
                     <Input placeholder="Enter slug" {...field} />
@@ -156,15 +146,9 @@ const ProductForm = ({
                       onClick={() => {
                         form.setValue(
                           "slug",
-                          slugify(form.getValues("name"), { lower: true })
+                          slugify(form.getValues("name"), { lower: true }),
                         );
                       }}
-                      onClick={() =>
-                        form.setValue(
-                          "slug",
-                          slugify(form.getValues("name"), { lower: true }),
-                        )
-                      }
                     >
                       Generate
                     </Button>
@@ -188,13 +172,6 @@ const ProductForm = ({
                 "category"
               >;
             }) => (
-
-        {/* Category & Brand */}
-        <div className="flex flex-col md:flex-row gap-5">
-          <FormField
-            control={form.control}
-            name="category"
-            render={({ field }) => (
               <FormItem className="w-full">
                 <FormLabel>Category</FormLabel>
                 <FormControl>
@@ -216,10 +193,6 @@ const ProductForm = ({
                 "brand"
               >;
             }) => (
-          <FormField
-            control={form.control}
-            name="brand"
-            render={({ field }) => (
               <FormItem className="w-full">
                 <FormLabel>Brand</FormLabel>
                 <FormControl>
@@ -243,13 +216,6 @@ const ProductForm = ({
                 "price"
               >;
             }) => (
-
-        {/* Price & Stock */}
-        <div className="flex flex-col md:flex-row gap-5">
-          <FormField
-            control={form.control}
-            name="price"
-            render={({ field }) => (
               <FormItem className="w-full">
                 <FormLabel>Price</FormLabel>
                 <FormControl>
@@ -271,10 +237,6 @@ const ProductForm = ({
                 "stock"
               >;
             }) => (
-          <FormField
-            control={form.control}
-            name="stock"
-            render={({ field }) => (
               <FormItem className="w-full">
                 <FormLabel>Stock</FormLabel>
                 <FormControl>
@@ -330,92 +292,6 @@ const ProductForm = ({
         </div>
         <div className="upload-field">
           {/* isFeatured */}
-
-        {/* Images Upload */}
-        <FormField
-          control={form.control}
-          name="images"
-          render={() => (
-            <FormItem className="w-full">
-              <FormLabel>Images</FormLabel>
-              <Card>
-                <CardContent className="space-y-2 mt-2 min-h-48">
-                  <div className="flex flex-wrap gap-2">
-                    {images.map((image: string, index: number) => (
-                      <div key={image} className="relative w-20 h-20">
-                        <Image
-                          src={image}
-                          alt={`product image ${index + 1}`}
-                          className="w-full h-full object-cover rounded-sm"
-                          width={100}
-                          height={100}
-                        />
-                        {/* Remove Button */}
-                        <button
-                          type="button"
-                          className="absolute top-0 right-0 bg-red-600 text-white rounded-full w-5 h-5 flex items-center justify-center text-xs hover:bg-red-700"
-                          onClick={() => {
-                            const newImages = images.filter(
-                              (_, i) => i !== index,
-                            );
-                            form.setValue("images", newImages);
-                          }}
-                        >
-                          ✕
-                        </button>
-                        {/* Edit Button */}
-                        <button
-                          type="button"
-                          className="absolute bottom-0 left-0 bg-blue-600 text-white rounded px-1 text-xs hover:bg-blue-700"
-                          onClick={() => {
-                            UploadButton({
-                              endpoint: "imageUploader",
-                              onClientUploadComplete: (
-                                res: { url: string }[],
-                              ) => {
-                                const newImages = [...images];
-                                newImages[index] = res[0].url;
-                                form.setValue("images", newImages);
-                              },
-                              onUploadError: (error: Error) => {
-                                toast({
-                                  variant: "destructive",
-                                  description: `ERROR! ${error.message}`,
-                                });
-                              },
-                            });
-                          }}
-                        >
-                          Edit
-                        </button>
-                      </div>
-                    ))}
-
-                    {/* Upload New Image */}
-                    <FormControl>
-                      <UploadButton
-                        endpoint="imageUploader"
-                        onClientUploadComplete={(res: { url: string }[]) => {
-                          form.setValue("images", [...images, res[0].url]);
-                        }}
-                        onUploadError={(error: Error) => {
-                          toast({
-                            variant: "destructive",
-                            description: `ERROR! ${error.message}`,
-                          });
-                        }}
-                      />
-                    </FormControl>
-                  </div>
-                </CardContent>
-              </Card>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-
-        {/* Featured / Banner */}
-        <div className="upload-field">
           Featured Product
           <Card>
             <CardContent className="space-y-2 mt-2">
@@ -488,27 +364,6 @@ const ProductForm = ({
             )}
           />
         </div>
-
-        {/* Description */}
-        <FormField
-          control={form.control}
-          name="description"
-          render={({ field }) => (
-            <FormItem className="w-full">
-              <FormLabel>Description</FormLabel>
-              <FormControl>
-                <Textarea
-                  placeholder="Enter product description"
-                  className="resize-none"
-                  {...field}
-                />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-
-        {/* Submit */}
         <div>
           <Button
             type="submit"
