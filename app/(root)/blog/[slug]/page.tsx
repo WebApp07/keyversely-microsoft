@@ -1,3 +1,4 @@
+import { Product } from "@/types";
 import { notFound } from "next/navigation";
 import { Metadata } from "next";
 import Image from "next/image";
@@ -266,7 +267,7 @@ export default async function BlogPostPage({ params }: Props) {
               </p>
               <div className="space-y-2">
                 {products.length > 0 ? (
-                  products.map((product) => (
+                  products.map((product: Product) => (
                     <Link
                       key={product.id}
                       href={`/product/${product.slug}`}
