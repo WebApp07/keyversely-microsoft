@@ -48,7 +48,7 @@ export default async function AdminBlogPage() {
 
       <div className="rounded-xl border overflow-hidden">
         <table className="w-full text-sm">
-          <t>
+          <thead>
             <tr className="border-b bg-muted/50">
               <th className="text-left px-5 py-3 font-medium">Title</th>
               <th className="text-left px-4 py-3 font-medium hidden md:table-cell">
@@ -63,7 +63,7 @@ export default async function AdminBlogPage() {
               <th className="text-center px-4 py-3 font-medium">Status</th>
               <th className="text-right px-5 py-3 font-medium">Actions</th>
             </tr>
-          </t>
+          </thead>
           <tbody className="divide-y">
             {posts.length === 0 ? (
               <tr>
